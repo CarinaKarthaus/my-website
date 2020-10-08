@@ -2,10 +2,11 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { CanvasSpace, Pt, Group, Line, Create } from 'pts';
+import { CanvasSpace, Pt, Group, Line, Create, Bound } from 'pts';
 
 @Component({
   selector: 'app-home',
@@ -28,18 +29,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.graphicDraw();
   }
 
+
+  @HostListener('window:resize')
+      resizeCanvas() {
+        this.canvas.clientHeight;
+        this.canvas.clientWidth;
+
+}
+
+
   graphicDraw() {
     //init Pts.space
     this.space = new CanvasSpace(this.canvas);
+    this.space.autoResize;
     this.space.setup({ bgcolor: '#000628', retina: true, resize: true });
-    var form = this.space.getForm();
+    var form = this.space.getForm();  
     // var singularityPt = new Pt([this.space.size.x, 0]);
     // var line = Line.fromAngle([0, this.space.size.y], 2.4, 1);
     var pts = new Group();
     pts = Create.distributeRandom(this.space.innerBound, 150);
 
     this.space.add({
-      // creatr 200 random points
+      // creatr 150 random points
       start: (bound) => {
         pts = Create.distributeRandom(this.space.innerBound, 150);
       },
