@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
