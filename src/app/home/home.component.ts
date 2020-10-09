@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { CanvasSpace, Pt, Group, Line, Create, Bound } from 'pts';
+import { CanvasSpace, Pt, Group, Line, Create, Bound, Const } from 'pts';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,8 @@ import { CanvasSpace, Pt, Group, Line, Create, Bound } from 'pts';
 export class HomeComponent implements OnInit, AfterViewInit {
   canvas: HTMLElement;
   space: CanvasSpace;
+  form;
+  Pts;
 
   @ViewChild('pt') private parentRef: ElementRef<HTMLElement>;
 
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   graphicDraw() {
-    //init Pts.space
+      //init Pts.space
     this.space = new CanvasSpace(this.canvas);
     this.space.autoResize;
     this.space.setup({ bgcolor: '#000628', retina: true, resize: true });
