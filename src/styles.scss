@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+    font-family: Montserrat;
+    src: url(assets/font/Montserrat/Montserrat-Light.ttf) format("truetype");
+  }
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Montserrat', sans-serif !important; color: #45474A; }
 
 
 .section-container {
@@ -10,10 +15,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .section-header {
     text-transform: uppercase;
-    color: #45474A;
     text-align: center;
     font-size: 3rem;
-    padding-bottom: 5rem;
+    padding-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header-line {
+    background: #444649;
+    height: 4px;
+    margin: 25px 0 75px 0;
+    width: 70px;
 }
 .flex {
     align-items: center;
@@ -21,3 +34,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: column;
     justify-content: center;
 }
+
+h2 {
+    font-family: 'Montserrat', sans-serif !important; 
+    font-weight: 600 !important;
+}
+    

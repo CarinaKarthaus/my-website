@@ -6,33 +6,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  characteristics = [
+    {
+      'charName': 'International Experience',
+      'charDescription:': 'Placeholder'
+    },
+    {
+      'charName': 'PLACEHOLDER',
+      'charDescription:': 'Placeholder'
+    },
+    {
+      'charName': 'PLACEHOLDER',
+      'charDescription:': 'Placeholder'
+    },
+    {
+      'charName': 'PLACEHOLDER',
+      'charDescription:': 'PLACEHOLDER'
+    }
+  ]
+  
   skills = [
     {
-       'skillName': 'HTML',
+      'skillName': 'HTML',
       'skillLevel': 85
     },
     {
-       'skillName': 'CSS',
+      'skillName': 'CSS',
       'skillLevel': 85
     },
     {
-       'skillName': 'JavaScript',
+      'skillName': 'JavaScript',
       'skillLevel': 75
     },
     {
-       'skillName': 'Angular',
+      'skillName': 'Angular',
       'skillLevel': 60
     },
     {
-       'skillName': 'Design Thinking',
+      'skillName': 'Design Thinking',
       'skillLevel': 70
     },
     {
-       'skillName': 'Node.js',
+      'skillName': 'Node.js',
       'skillLevel': 50
     },
     {
-       'skillName': 'UI Design',
+      'skillName': 'UI Design',
       'skillLevel': 50
     }
   ]

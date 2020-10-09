@@ -1,3 +1,21 @@
+.label-wrap {
+    display: flex;
+    justify-content: space-evenly;
+}
+.label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.char-icon {
+    width: 8rem;
+    height: 8rem;
+    background-color: #01A1A7;
+    border-radius: 25%;
+    margin-bottom: 1rem;
+}
+
 .skills-wrap {
     display: flex;
     padding: 5rem 0;
@@ -43,6 +61,19 @@
     background-color: #05C2C9;
     left: 0;
     top: 0;
+}
+.bar-value {
+    text-align: end;
+    padding-right: 1rem;
+    height: 100%;
+    width: 15%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1rem;
+    // font-weight: bold;
 }
 
 
