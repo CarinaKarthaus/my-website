@@ -9,19 +9,19 @@ export class AboutComponent implements OnInit {
   characteristics = [
     {
       'charName': 'International Experience',
-      'charDescription:': 'Placeholder'
+      'charDescr': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     },
     {
       'charName': 'PLACEHOLDER',
-      'charDescription:': 'Placeholder'
+      'charDescr': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     },
     {
       'charName': 'PLACEHOLDER',
-      'charDescription:': 'Placeholder'
+      'charDescr': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     },
     {
       'charName': 'PLACEHOLDER',
-      'charDescription:': 'PLACEHOLDER'
+      'charDescr': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     }
   ]
   
@@ -47,12 +47,20 @@ export class AboutComponent implements OnInit {
       'skillLevel': 70
     },
     {
+      'skillName': 'SCRUM',
+      'skillLevel': 70
+    },
+    {
       'skillName': 'Node.js',
       'skillLevel': 50
     },
     {
       'skillName': 'UI Design',
       'skillLevel': 50
+    },
+    {
+      'skillName': 'Python',
+      'skillLevel': 40
     }
   ]
 
