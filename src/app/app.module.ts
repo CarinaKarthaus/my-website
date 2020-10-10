@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 
@@ -24,7 +25,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

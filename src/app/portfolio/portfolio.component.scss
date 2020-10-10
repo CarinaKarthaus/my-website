@@ -1,3 +1,30 @@
 .portfolio {
     background-color: #f5f5f5;
 }
+.filter-row {
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 4rem 1rem 4rem;
+}
+
+.filter {
+    font-size: 1.5rem;
+    padding: 1rem 15%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 225ms all ease-in-out;
+
+    &:hover {
+        color: #e31b6d;
+    }
+}
+
+.active {
+    background-color: #e31b6d;
+    color: #fff !important;
+
+}
+
+mat-grid-tile {
+    background-color:  #01A1A7;
+}
