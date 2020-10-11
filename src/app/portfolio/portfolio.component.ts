@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// Class for dynamic grid list
-// export interface Tile {
-//   color: string;
-//   cols: number;
-//   rows: number;
-//   text: string;
-// }
-
 
 @Component({
   selector: 'app-portfolio',
@@ -15,17 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
+  currentFilter = '';
 
-  // For dynamic grid list
-  // tiles: Tile[] = [
-  //   {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-  //   {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-  //   {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-  //   {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  //   {text: 'Five', cols: 2, rows: 3, color: 'lightblue'}
-  // ];
-
-  
   projects = [ 
     { 
       title: 'El Pollo Loco', 
@@ -75,25 +58,28 @@ export class PortfolioComponent implements OnInit {
     // }
   ];
 
+  visibleProjects = this.projects;
+
   constructor() { }
 
   ngOnInit(): void {
-    for (let i = 0; i < this.projects.length; i++) {
-      console.log(this.projects[i].category);
-    }
     
   }
 
-
-  currentFilter = '';
-
+/**
+ * Filter visible projects
+ * @param newFilter: defines current filter selection for visible project-portfolio 
+ */
   updateFilter (newFilter? : string) {
     if (newFilter == undefined) {
       this.currentFilter = '';
+      this.visibleProjects = this.projects;
     } else if (newFilter == 'Angular') {
       this.currentFilter = 'Angular';
+      this.visibleProjects = this.projects.filter(project => project.category == 'Angular');
     } else if (newFilter == 'JavaScript') {
       this.currentFilter = 'JavaScript';
+      this.visibleProjects = this.projects.filter(project => project.category == 'JavaScript');
     }
   }
 
