@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'src/models/project.class';
+
+// Class for dynamic grid list
+// export interface Tile {
+//   color: string;
+//   cols: number;
+//   rows: number;
+//   text: string;
+// }
 
 
 @Component({
@@ -8,14 +15,24 @@ import { Project } from 'src/models/project.class';
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
+
+  // For dynamic grid list
+  // tiles: Tile[] = [
+  //   {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+  //   {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+  //   {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+  //   {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+  //   {text: 'Five', cols: 2, rows: 3, color: 'lightblue'}
+  // ];
+
   
-  projects = new Project( [
+  projects = [ 
     { 
       title: 'El Pollo Loco', 
       details: 'A JavaScript-based jump-and-run-game.', 
       app_link: 'http://carina-karthaus.developerakademie.com/el_pollo_loco/', 
       github_link: 'https://github.com/CarinaKarthaus/el_pollo_loco', 
-      img: 'el_pollo_loco.png',
+      img: 'el_pollo_loco3.png',
       img_mobile: '',
       category: 'JavaScript'
 
@@ -43,24 +60,42 @@ export class PortfolioComponent implements OnInit {
       details: 'A smart & simple webbased CRM system.', 
       app_link: ' ##########PLACEHOLDER#####', 
       github_link: '##########PLACEHOLDER#####', 
-      img: '##########PLACEHOLDER#####',
+      img: 'simple-crm.png',
       img_mobile: '##########PLACEHOLDER#####',
       category: 'Angular'
     },
-    {
-      title: 'This Website', 
-      details: '##########PLACEHOLDER#####', 
-      app_link: ' ##########PLACEHOLDER#####', 
-      github_link: '##########PLACEHOLDER#####', 
-      img: '##########PLACEHOLDER#####',
-      img_mobile: '##########PLACEHOLDER#####',
-      category: 'Angular'
-    }
-  ]);
+    // {
+    //   title: 'This Website', 
+    //   details: '##########PLACEHOLDER#####', 
+    //   app_link: ' ##########PLACEHOLDER#####', 
+    //   github_link: '##########PLACEHOLDER#####', 
+    //   img: '##########PLACEHOLDER#####',
+    //   img_mobile: '##########PLACEHOLDER#####',
+    //   category: 'Angular'
+    // }
+  ];
 
   constructor() { }
 
   ngOnInit(): void {
+    for (let i = 0; i < this.projects.length; i++) {
+      console.log(this.projects[i].category);
+    }
+    
   }
+
+
+  currentFilter = '';
+
+  updateFilter (newFilter? : string) {
+    if (newFilter == undefined) {
+      this.currentFilter = '';
+    } else if (newFilter == 'Angular') {
+      this.currentFilter = 'Angular';
+    } else if (newFilter == 'JavaScript') {
+      this.currentFilter = 'JavaScript';
+    }
+  }
+
 
 }

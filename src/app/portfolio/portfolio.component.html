@@ -5,16 +5,28 @@
     </div>
 
     <div class="filter-row flex">
-        <div class="filter active">All</div>
-        <div class="filter">Angular</div>
-        <div class="filter">JavaScript</div>
+        <div class="filter" [class.active]="currentFilter === ''" (click)="updateFilter()">All</div>
+        <div class="filter" [class.active]="currentFilter === 'Angular'" (click)="updateFilter('Angular')">Angular</div>
+        <div class="filter" [class.active]="currentFilter === 'JavaScript'" (click)="updateFilter('JavaScript')">JavaScript</div>
     </div>
 
     <div>
-        <mat-grid-list cols="2" rowHeight="2:1">
-            <mat-grid-tile>1</mat-grid-tile>
-            <mat-grid-tile>2</mat-grid-tile>
-            <mat-grid-tile>3</mat-grid-tile>
-          </mat-grid-list>
+        <!-- <mat-grid-list cols="4" rowHeight="fit">
+            <mat-grid-tile
+                *ngFor="let tile of tiles"
+                [colspan]="tile.cols"
+                [rowspan]="tile.rows"
+                [style.background]="tile.color">
+              {{tile.text}}
+            </mat-grid-tile>
+          </mat-grid-list> -->
+
+        <mat-grid-list cols="2" rowHeight="fit">
+            <mat-grid-tile *ngFor="let project of projects" >
+                <!-- <img src="{{'./assets/img/projects/'+ project.img }}" > -->
+                <span>{{ project.title }}</span>
+
+            </mat-grid-tile>
+        </mat-grid-list>
     </div>
 </div>
