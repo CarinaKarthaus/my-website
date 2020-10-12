@@ -47,15 +47,15 @@ export class PortfolioComponent implements OnInit {
       img_mobile: '##########PLACEHOLDER#####',
       category: 'Angular'
     },
-    // {
-    //   title: 'This Website', 
-    //   details: '##########PLACEHOLDER#####', 
-    //   app_link: ' ##########PLACEHOLDER#####', 
-    //   github_link: '##########PLACEHOLDER#####', 
-    //   img: '##########PLACEHOLDER#####',
-    //   img_mobile: '##########PLACEHOLDER#####',
-    //   category: 'Angular'
-    // }
+    {
+      title: 'carinakarthaus.com', 
+      details: '##########PLACEHOLDER#####', 
+      app_link: ' ##########PLACEHOLDER#####', 
+      github_link: '##########PLACEHOLDER#####', 
+      img: '##########PLACEHOLDER#####',
+      img_mobile: '##########PLACEHOLDER#####',
+      category: 'Angular'
+    }
   ];
 
   visibleProjects = this.projects;

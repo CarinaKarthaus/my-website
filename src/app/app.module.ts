@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -27,7 +28,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-    MatGridListModule
+    MatGridListModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

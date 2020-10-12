@@ -7,12 +7,15 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CanvasSpace, Pt, Group, Line, Create, Bound, Const } from 'pts';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
+
+
 export class HomeComponent implements OnInit, AfterViewInit {
   canvas: HTMLElement;
   space: CanvasSpace;
@@ -21,14 +24,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('pt') private parentRef: ElementRef<HTMLElement>;
 
-  constructor() {}
+  constructor(private viewportScroller: ViewportScroller) {}
+  
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   
+  }
 
   ngAfterViewInit() {
     const parentElement = this.parentRef.nativeElement;
     this.canvas = parentElement.querySelector('canvas');
-    this.graphicDraw();
+    this.graphicDraw(); 
   }
 
 
@@ -73,5 +79,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
     //// ----
     this.space.bindMouse().bindTouch().play();
+  }
+
+  public scrollTo(anchorId: string): void {
+    this.viewportScroller.scrollToAnchor(anchorId);
   }
 }
