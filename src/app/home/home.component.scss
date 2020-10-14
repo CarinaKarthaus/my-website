@@ -42,7 +42,7 @@ strong {
     display: flex;
     align-items: center;
     cursor: pointer;
-    transition: 0.3s all ease-in-out;
+    transition: 0.4s all ease-in-out;
 
     &:hover {
         background-color: #04c2c9;
@@ -51,18 +51,11 @@ strong {
     }
 
      &:hover .btn-arrow {
-        -webkit-animation:spin 0.3s ease-in-out;
-        -moz-animation:spin 0.3s ease-in-out;
-        animation:spin 0.3s ease-in-out;
-        animation-fill-mode: forwards;
+        transform: rotate(90deg);
     } 
-
-
-    @-moz-keyframes spin { 100% { -moz-transform: rotate(90deg); } }
-    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(90deg); } }
-    @keyframes spin { 100% { -webkit-transform: rotate(90deg); transform:rotate(90deg); } }
 
     .btn-arrow {
         padding-left: 0.5rem;
+        transition: transform 225ms ease-in-out;
     }
 }

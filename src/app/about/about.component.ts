@@ -1,11 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { SlideInAnimation } from '../animations';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  styleUrls: ['./about.component.scss'],
+  animations: [ SlideInAnimation ]
 })
 export class AboutComponent implements OnInit {
+  currentPagePosition;
+  animationStateHeader = 'out';
+  animationStateLabel = 'out';
+  animationStateSkills = 'out';
+
+  @HostListener('window:scroll') 
+  animateOnScroll() {
+    this.currentPagePosition = window.scrollY;
+    console.log(this.currentPagePosition);
+
+    if (this.currentPagePosition > 250) {
+      this.animationStateHeader = 'in';
+    } else if (this.currentPagePosition > 400) {
+      this.animationStateLabel = 'in';
+    } else if (this.currentPagePosition > 700) {
+      this.animationStateSkills = 'in';
+    }
+  }
+
   characteristics = [
     {
       'charName': 'International Experience',
@@ -25,6 +46,8 @@ export class AboutComponent implements OnInit {
     }
   ]
   
+
+ 
   skills = [
     {
       'skillName': 'HTML',

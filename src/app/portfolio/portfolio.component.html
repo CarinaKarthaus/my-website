@@ -1,22 +1,27 @@
 <div class="section-container portfolio">
-    
+
     <div class="section-header">Portfolio
-            <div class="header-line"></div>
+        <div class="header-line"></div>
     </div>
+    <div class="portfolio-grid-wrap">
 
-    <div class="filter-row flex">
-        <div class="filter" [class.active]="currentFilter === ''" (click)="updateFilter()">All</div>
-        <div class="filter" [class.active]="currentFilter === 'Angular'" (click)="updateFilter('Angular')">Angular</div>
-        <div class="filter" [class.active]="currentFilter === 'JavaScript'" (click)="updateFilter('JavaScript')">JavaScript</div>
-    </div>
+        <div class="filter-row flex">
+            <div class="filter" [class.active]="currentFilter === ''" (click)="updateFilter()">All</div>
+            <div class="filter" [class.active]="currentFilter === 'Angular'" (click)="updateFilter('Angular')">Angular
+            </div>
+            <div class="filter" [class.active]="currentFilter === 'JavaScript'" (click)="updateFilter('JavaScript')">
+                JavaScript</div>
+        </div>
 
-    <div>
-        <mat-grid-list cols="3" rowHeight="1.5:1">
-            <mat-grid-tile *ngFor="let project of visibleProjects" >
-                <!-- <img src="{{'./assets/img/projects/'+ project.img }}" > -->
-                <span>{{ project.title }}</span>
+        <div>
+            <mat-grid-list cols="3" rowHeight="1.5:1">
+                <mat-grid-tile *ngFor="let project of visibleProjects">
+                    <!-- <img src="{{'./assets/img/projects/'+ project.img }}" > -->
+                    <span>{{ project.title }}</span>
 
-            </mat-grid-tile>
-        </mat-grid-list>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+
     </div>
 </div>
