@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { SlideInAnimation } from '../animations';
+import { AnimationTriggerService } from '../services/animationtriggerservice';
 
 @Component({
   selector: 'app-about',
@@ -8,23 +9,14 @@ import { SlideInAnimation } from '../animations';
   animations: [ SlideInAnimation ]
 })
 export class AboutComponent implements OnInit {
-  currentPagePosition;
-  animationStateHeader = 'out';
-  animationStateLabel = 'out';
-  animationStateSkills = 'out';
+  
+  constructor(public triggerService: AnimationTriggerService) { }
+  animationState = this.triggerService.animationState;
 
-  @HostListener('window:scroll') 
-  animateOnScroll() {
-    this.currentPagePosition = window.scrollY;
-    console.log(this.currentPagePosition);
-
-    if (this.currentPagePosition > 250) {
-      this.animationStateHeader = 'in';
-    } else if (this.currentPagePosition > 400) {
-      this.animationStateLabel = 'in';
-    } else if (this.currentPagePosition > 700) {
-      this.animationStateSkills = 'in';
-    }
+  ngOnInit(): void {
+    setInterval(() => {
+      this.triggerService.animateOnScroll();
+    },50);
   }
 
   characteristics = [
@@ -88,9 +80,6 @@ export class AboutComponent implements OnInit {
   ]
 
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

@@ -1,10 +1,10 @@
 <div class="section-container">
 
-    <div class="section-header" [@slideIn]="animationStateHeader">About
+    <div class="section-header" [@slideIn]="animationState['about_header']">About
         <div class="header-line"></div>
     </div>
 
-    <div class="label-wrap" >
+    <div class="label-wrap" [@slideIn]="animationState['labels']">
         <div class="label" *ngFor="let characteristic of characteristics">
             <div class="char-icon"></div>
             <h2>{{ characteristic.charName }}</h2>
@@ -13,14 +13,14 @@
     </div>
 
     <div class="skills-wrap" >
-        <div class="bio-wrap">
+        <div class="bio-wrap" [@slideIn]="animationState['skills']">
             <img src="../../assets/img/profile.jpg">
             <h2>Who I am</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem corrupti alias atque necessitatibus quaerat
                 quo? Doloribus molestias repellat?</p>
         </div>
 
-        <div class="bar-wrap">
+        <div class="bar-wrap" [@slideInReverse]="animationState['skills']">
             <div class="bar" *ngFor="let skill of skills">
                 <div class="bar-scale">
                     <div class="bar-fill" [style.width]="skill.skillLevel + '%'"></div>

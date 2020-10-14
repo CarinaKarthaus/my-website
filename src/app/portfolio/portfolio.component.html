@@ -1,9 +1,9 @@
 <div class="section-container portfolio">
 
-    <div class="section-header">Portfolio
+    <div class="section-header" [@slideIn]="animationState['portfolio_header']">Portfolio
         <div class="header-line"></div>
     </div>
-    <div class="portfolio-grid-wrap">
+    <div class="portfolio-grid-wrap" [@slideInUpwards]="animationState['portfolio']">
 
         <div class="filter-row flex">
             <div class="filter" [class.active]="currentFilter === ''" (click)="updateFilter()">All</div>

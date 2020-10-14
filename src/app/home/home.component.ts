@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('pt') private parentRef: ElementRef<HTMLElement>;
 
   constructor(private viewportScroller: ViewportScroller) {}
-  currentPagePosition;
 
   ngOnInit(): void {}
 
@@ -33,11 +32,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.graphicDraw();
   }
 
-  @HostListener('window:scroll')
-  displayPagePosition() {
-    this.currentPagePosition = window.scrollY;
-    console.log(this.currentPagePosition);
-  }
 
   @HostListener('window:resize')
   resizeCanvas() {
