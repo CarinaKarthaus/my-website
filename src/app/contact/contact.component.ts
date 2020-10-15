@@ -11,6 +11,7 @@ import { AnimationTriggerService } from '../services/animationtriggerservice';
 export class ContactComponent implements OnInit {
 
   constructor(public triggerService: AnimationTriggerService) { }
+  
   animationState = this.triggerService.animationState;
 
   ngOnInit(): void {

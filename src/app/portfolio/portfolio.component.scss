@@ -37,6 +37,8 @@ mat-grid-list {
 
 mat-grid-tile {
     background-color:  #01A1A7;
+    // opacity: 0;
+    // animation-fill-mode: backwards;
 
     img {
         object-fit: contain;

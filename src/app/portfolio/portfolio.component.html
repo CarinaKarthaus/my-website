@@ -3,9 +3,9 @@
     <div class="section-header" [@slideIn]="animationState['portfolio_header']">Portfolio
         <div class="header-line"></div>
     </div>
-    <div class="portfolio-grid-wrap" [@slideInUpwards]="animationState['portfolio']">
+    <div class="portfolio-grid-wrap" >
 
-        <div class="filter-row flex">
+        <div class="filter-row flex" [@slideInUpwards]="animationState['portfolio_filter']"  >
             <div class="filter" [class.active]="currentFilter === ''" (click)="updateFilter()">All</div>
             <div class="filter" [class.active]="currentFilter === 'Angular'" (click)="updateFilter('Angular')">Angular
             </div>
@@ -14,8 +14,8 @@
         </div>
 
         <div>
-            <mat-grid-list cols="3" rowHeight="1.5:1">
-                <mat-grid-tile *ngFor="let project of visibleProjects">
+            <mat-grid-list cols="3" rowHeight="1.5:1" [@slideInUpwardsChild]="animationState['portfolio']" >
+                <mat-grid-tile *ngFor="let project of visibleProjects" >
                     <!-- <img src="{{'./assets/img/projects/'+ project.img }}" > -->
                     <span>{{ project.title }}</span>
 

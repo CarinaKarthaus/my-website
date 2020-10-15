@@ -14,6 +14,7 @@ export class AnimationTriggerService {
     'labels': 'out',
     'skills': 'out',
     'portfolio_header': 'out',
+    'portfolio_filter': 'out',
     'portfolio': 'out',
     'contact_header': 'out',
     'contact': 'out'
@@ -27,10 +28,11 @@ export class AnimationTriggerService {
     this.currentPagePosition = window.scrollY;
 
     if (this.currentPagePosition >  275) { this.animationState.about_header = 'in'} 
-    if (this.currentPagePosition >  650) { this.animationState.labels = 'in' }
+    if (this.currentPagePosition >  250) { this.animationState.labels = 'in' }
     if (this.currentPagePosition >  950) { this.animationState.skills = 'in' }
     if (this.currentPagePosition > 1650) { this.animationState.portfolio_header = 'in' }
-    if (this.currentPagePosition > 2000) { this.animationState.portfolio = 'in' }
+    if (this.currentPagePosition > 1650) { this.animationState.portfolio_filter = 'in' }
+    if (this.currentPagePosition > 1650) { this.animationState.portfolio = 'in' }
     if (this.currentPagePosition > 2800) { this.animationState.contact_header = 'in' }
     if (this.currentPagePosition > 3000) { this.animationState.contact = 'in' }
     
