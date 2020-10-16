@@ -1,9 +1,9 @@
-<nav>
+<nav [class.fixed-nav]="fixedNav">
     <div class="link-wrap">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
+        <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
+        <a href="#about" [class.active]="navPositionIndicator.aboutPosition" >About</a>
+        <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition" >Portfolio</a>
+        <a href="#contact" [class.active]="navPositionIndicator.contactPosition" >Contact</a>
         
     </div>
 </nav>

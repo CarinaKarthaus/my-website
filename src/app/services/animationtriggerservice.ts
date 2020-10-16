@@ -33,8 +33,8 @@ export class AnimationTriggerService {
     if (this.currentPagePosition > 1650) { this.animationState.portfolio_header = 'in' }
     if (this.currentPagePosition > 1650) { this.animationState.portfolio_filter = 'in' }
     if (this.currentPagePosition > 1650) { this.animationState.portfolio = 'in' }
-    if (this.currentPagePosition > 2800) { this.animationState.contact_header = 'in' }
-    if (this.currentPagePosition > 3000) { this.animationState.contact = 'in' }
+    if (this.currentPagePosition > 2600) { this.animationState.contact_header = 'in' }
+    if (this.currentPagePosition > 2800) { this.animationState.contact = 'in' }
     
     console.log(this.currentPagePosition);
     return this.animationState;  
