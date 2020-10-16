@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { SlideInAnimation } from '../animations';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 import { projects } from '../../assets/data/projects';
@@ -23,6 +23,16 @@ export class PortfolioComponent implements OnInit {
   }
 
   animationState = this.triggerService.animationState;
+  scrollHeight = this.triggerService.scrollHeight;
+
+
+
+  @HostListener('window:scroll') 
+  updateScrollHeight() {
+    this.scrollHeight.portfolio_header = document.getElementById('header').clientHeight; 
+    this.scrollHeight.portfolio_filter = document.getElementById('portfolio_filter').clientHeight;    
+    this.scrollHeight.portfolio = document.getElementById('portfolio').clientHeight;  
+  }
   
 /**
  * Filter visible projects

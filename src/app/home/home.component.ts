@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { CanvasSpace, Pt, Group, Line, Create, Bound, Const } from 'pts';
 import { ViewportScroller } from '@angular/common';
+import { AnimationTriggerService } from '../services/animationtriggerservice';
 
 @Component({
   selector: 'app-home',
@@ -15,16 +16,28 @@ import { ViewportScroller } from '@angular/common';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+
+  constructor(private viewportScroller: ViewportScroller, public triggerService: AnimationTriggerService ) {}
+
   canvas: HTMLCanvasElement;
   space: CanvasSpace;
   form;
   Pts;
+  scrollHeightHome = this.triggerService.scrollHeight.home;
+
+ 
 
   @ViewChild('pt') private parentRef: ElementRef<HTMLElement>;
 
-  constructor(private viewportScroller: ViewportScroller) {}
+  @HostListener('window:scroll') 
+    updateScrollHeight() {
+      this.scrollHeightHome = document.getElementById('pt').clientHeight;
+      this.triggerService.scrollHeight.home = this.scrollHeightHome;     
+    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   ngAfterViewInit() {
     const parentElement = this.parentRef.nativeElement;

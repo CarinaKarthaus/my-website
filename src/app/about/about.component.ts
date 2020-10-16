@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { SlideInAnimation } from '../animations';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 import { labels, skills } from '../../assets/data/skills';
@@ -16,6 +16,8 @@ export class AboutComponent implements OnInit {
   animationState = this.triggerService.animationState;
   labels = labels;
   skills = skills;
+  scrollHeight = this.triggerService.scrollHeight;
+
 
   ngOnInit(): void {
     setInterval(() => {
@@ -23,7 +25,12 @@ export class AboutComponent implements OnInit {
     },50);
   }
 
-
+  @HostListener('window:scroll') 
+  updateScrollHeight() {
+    this.scrollHeight.aboutHeader = document.getElementById('header').clientHeight; 
+    this.scrollHeight.aboutLabels = document.getElementById('labels').clientHeight;    
+    this.scrollHeight.aboutSkills = document.getElementById('skills').clientHeight;  
+  }
 
 
 }
