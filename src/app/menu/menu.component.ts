@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-// import { AnimationTriggerService } from '../services/animationtriggerservice';
 
 @Component({
   selector: 'app-menu',
@@ -22,6 +21,11 @@ export class MenuComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  navAppears() {
+    
+  }
+
 
   /**
    * Check current position to adjust nav-bar & active-style for links
@@ -46,24 +50,27 @@ export class MenuComponent implements OnInit {
    * Checks section currently visible and assigns/removes active-link-style accordingly
    */
   checkActiveSection() {
-    if (this.currentPagePosition <= 500) {
+    if (this.currentPagePosition <= 350) {
       this.resetNavClasses();
       this.navPositionIndicator.homePosition = true;
     }
-    if (this.currentPagePosition > 500) {
+    if (this.currentPagePosition > 350) {
       this.resetNavClasses();
       this.navPositionIndicator.aboutPosition = true;
     }
-    if (this.currentPagePosition > 1850) {
+    if (this.currentPagePosition > 1800) {
       this.resetNavClasses();
       this.navPositionIndicator.portfolioPosition = true;
     }
-    if (this.currentPagePosition > 2800) {
+    if (this.currentPagePosition > 2750) {
       this.resetNavClasses();
       this.navPositionIndicator.contactPosition = true;
     }
   }
 
+  /**
+   * Remove active-class from all nav-links by setting all indicators to false
+   */
   resetNavClasses() {
     for (let i in this.navPositionIndicator) {
       if (Object.hasOwnProperty.call(this.navPositionIndicator, i)) {

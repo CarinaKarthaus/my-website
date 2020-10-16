@@ -1,4 +1,4 @@
-<nav [class.fixed-nav]="fixedNav">
+<nav [class.fixed-nav]="fixedNav" (mouseenter)="navAppears()">
     <div class="link-wrap">
         <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
         <a href="#about" [class.active]="navPositionIndicator.aboutPosition" >About</a>

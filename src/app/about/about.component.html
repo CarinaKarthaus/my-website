@@ -20,7 +20,7 @@
                 quo? Doloribus molestias repellat?</p>
         </div>
 
-        <div class="bar-wrap" [@slideInReverse]="animationState['skills']">
+        <div class="bar-wrap" [@slideInReverseChild]="animationState['skills']" >
             <div class="bar" *ngFor="let skill of skills">
                 <div class="bar-scale">
                     <div class="bar-fill" [style.width]="skill.skillLevel + '%'"></div>

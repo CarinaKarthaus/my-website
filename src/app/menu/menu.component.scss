@@ -27,10 +27,16 @@ nav {
 }
 
 .fixed-nav {
+    opacity: 0;
     position: fixed;
     top: 0;
     z-index: 5;
     height: initial;
+    transition: .6s all ease-in-out;
+
+    &:hover {
+        opacity: 1;
+    }
 }
 
 
