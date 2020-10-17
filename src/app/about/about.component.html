@@ -1,10 +1,10 @@
 <div class="section-container">
 
-    <div class="section-header" [@slideIn]="animationState['about_header']" id="header">About
+    <div class="section-header" [@slideIn]="animationState['about_header']" #aboutHeader>About
         <div class="header-line"></div>
     </div>
 
-    <div class="label-wrap" [@slideInChild]="animationState['labels']" id="labels">
+    <div class="label-wrap" [@slideInChild]="animationState['about_labels']" #aboutLabels>
         <div class="label" *ngFor="let label of labels" >
             <div class="char-icon"></div>
             <h2>{{ label.labelName }}</h2>
@@ -12,15 +12,15 @@
         </div>
     </div>
 
-    <div class="skills-wrap" id="skills">
-        <div class="bio-wrap" [@slideIn]="animationState['skills']">
+    <div class="skills-wrap" id="about_skills" #aboutSkills>
+        <div class="bio-wrap" [@slideIn]="animationState['about_skills']">
             <img src="../../assets/img/profile.jpg">
             <h2>Who I am</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem corrupti alias atque necessitatibus quaerat
                 quo? Doloribus molestias repellat?</p>
         </div>
 
-        <div class="bar-wrap" [@slideInReverseChild]="animationState['skills']" >
+        <div class="bar-wrap" [@slideInReverseChild]="animationState['about_skills']" >
             <div class="bar" *ngFor="let skill of skills">
                 <div class="bar-scale">
                     <div class="bar-fill" [style.width]="skill.skillLevel + '%'"></div>

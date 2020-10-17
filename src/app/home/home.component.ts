@@ -19,25 +19,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   constructor(private viewportScroller: ViewportScroller, public triggerService: AnimationTriggerService ) {}
 
+  ngOnInit(): void {
+    
+  }
+
   canvas: HTMLCanvasElement;
   space: CanvasSpace;
   form;
   Pts;
-  scrollHeightHome = this.triggerService.scrollHeight.home;
 
  
+  
+
+
+
+  // Rendering and resizing/adjusting of canvas
 
   @ViewChild('pt') private parentRef: ElementRef<HTMLElement>;
-
-  @HostListener('window:scroll') 
-    updateScrollHeight() {
-      this.scrollHeightHome = document.getElementById('pt').clientHeight;
-      this.triggerService.scrollHeight.home = this.scrollHeightHome;     
-    }
-
-  ngOnInit(): void {
-    
-  }
 
   ngAfterViewInit() {
     const parentElement = this.parentRef.nativeElement;
@@ -100,6 +98,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     //// ----
     this.space.bindMouse().bindTouch().play();
   }
+
+  // Scrolling on btn-click
 
   public scrollTo(anchorId: string): void {
     this.viewportScroller.scrollToAnchor(anchorId);

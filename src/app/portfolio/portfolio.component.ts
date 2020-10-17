@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlideInAnimation } from '../animations';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 import { projects } from '../../assets/data/projects';
@@ -12,6 +12,7 @@ import { projects } from '../../assets/data/projects';
 })
 
 export class PortfolioComponent implements OnInit {
+  animationState = this.triggerService.animationState;
   currentFilter = '';
   projects = projects;
   visibleProjects = this.projects;
@@ -22,17 +23,32 @@ export class PortfolioComponent implements OnInit {
     
   }
 
-  animationState = this.triggerService.animationState;
-  scrollHeight = this.triggerService.scrollHeight;
+  // Access Elements to detect offset to document top
+  @ViewChild('portfolioHeader') portfolioHeader: ElementRef;
+  @ViewChild('portfolioFilter') portfolioFilter: ElementRef;
+  @ViewChild('portfolioGrid') portfolioGrid: ElementRef;
 
-
+  headerOffset = 0;
+  filterOffset = 0;
+  portfolioOffset = 0;
+  elementOffsetTop = this.triggerService.elementOffsetTop;
 
   @HostListener('window:scroll') 
-  updateScrollHeight() {
-    this.scrollHeight.portfolio_header = document.getElementById('header').clientHeight; 
-    this.scrollHeight.portfolio_filter = document.getElementById('portfolio_filter').clientHeight;    
-    this.scrollHeight.portfolio = document.getElementById('portfolio').clientHeight;  
-  }
+  updateOffset() {
+      const rectHeader = this.portfolioHeader.nativeElement.getBoundingClientRect();
+      const rectFilter = this.portfolioFilter.nativeElement.getBoundingClientRect();
+      const rectPortfolio = this.portfolioGrid.nativeElement.getBoundingClientRect();
+
+      // Add element's offset to viewport-top to the offset already scrolled (pageYOffset)
+      this.headerOffset = rectHeader.top + window.pageYOffset; // - document.documentElement.clientTop;
+      this.filterOffset = rectFilter.top + window.pageYOffset; // - document.documentElement.clientTop;
+      this.portfolioOffset = rectPortfolio.top + window.pageYOffset; // - document.documentElement.clientTop;
+      // Update offset-object from triggerService
+      this.elementOffsetTop.portfolio_header = this.headerOffset;
+      this.elementOffsetTop.portfolio_filter = this.filterOffset;
+      this.elementOffsetTop.portfolio = this.portfolioOffset;
+      
+    }
   
 /**
  * Filter visible projects

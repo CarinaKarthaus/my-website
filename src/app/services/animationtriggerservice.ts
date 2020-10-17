@@ -5,42 +5,13 @@ import { HostListener, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AnimationTriggerService {
-  currentPagePosition: number;
-  triggerOffset: number;
-
-  public scrollHeight = {
-    home: 1000,
-    aboutHeader: 1050,
-    aboutLabels: 1100,
-    aboutSkills: 1200,
-    portfolio_header: 1800,
-    portfolio_filter: 2000,
-    portfolio: 2100,
-    contact_header: 2700,
-    contact_dialog: 2800,
-  };
-
-  private scrollPosition = {
-    home: 1000,
-    aboutHeader: 1050,
-    aboutLabels: 1100,
-    aboutSkills: 1200,
-    portfolio_header: 1800,
-    portfolio_filter: 2000,
-    portfolio: 2100,
-    contact_header: 2700,
-    contact_dialog: 2800,
-    footer: 3000,
-  }
-
-  private absScrollPosition = this.scrollPosition;
 
   constructor() { }
-  
+
   public animationState = {
     'about_header': 'out',
-    'labels': 'out',
-    'skills': 'out',
+    'about_labels': 'out',
+    'about_skills': 'out',
     'portfolio_header': 'out',
     'portfolio_filter': 'out',
     'portfolio': 'out',
@@ -50,21 +21,57 @@ export class AnimationTriggerService {
     'footer': 'out'
   };
 
+  currentPagePosition: number;
+  triggerOffset: number;
+  windowHeight: number;
+
+  // Indicates offset of HTML-element to the document's top edge
+  public elementOffsetTop = {
+    home: 1000,
+    about_header: 1050,
+    about_labels: 1100,
+    about_skills: 1200,
+    portfolio_header: 1800,
+    portfolio_filter: 2000,
+    portfolio: 2100,
+    contact_header: 2700,
+    contact_dialog: 2800,
+    footer: 4000,
+  };
+
+  public animTriggerPosition = {
+    home: 1000,
+    about_header: 1050,
+    about_labels: 1100,
+    about_skills: 1200,
+    portfolio_header: 1800,
+    portfolio_filter: 2000,
+    portfolio: 2100,
+    contact_header: 2700,
+    contact_dialog: 2800,
+    footer: 3000,
+  }
+
 
   calculateTriggerPositions() {
-    // this.triggerOffset = 500;
-    this.triggerOffset =  window.innerHeight / 3  ;
+    this.windowHeight = window.innerHeight;
+    this.triggerOffset =  window.innerHeight / 2  ;
 
-    // this.scrollPosition.home
-    this.absScrollPosition.aboutHeader = this.scrollHeight.home ;
-    this.absScrollPosition.aboutLabels = (this.scrollPosition.home + this.scrollHeight.aboutHeader)  ;
-    this.absScrollPosition.aboutSkills = (this.scrollPosition.aboutHeader + this.scrollHeight.aboutLabels) ;
-    this.absScrollPosition.portfolio_header = (this.scrollPosition.aboutLabels + this.scrollHeight.aboutSkills)  ;
-    this.absScrollPosition.portfolio_filter = (this.scrollPosition.aboutSkills + this.scrollHeight.portfolio_header) ;
-    this.absScrollPosition.portfolio = (this.scrollPosition.portfolio_header + this.scrollHeight.portfolio_filter) ;
-    this.absScrollPosition.contact_header = (this.scrollPosition.portfolio_filter + this.scrollHeight.portfolio) ;
-    this.absScrollPosition.contact_dialog = (this.scrollPosition.portfolio + this.scrollHeight.contact_header) ;
-    this.absScrollPosition.footer = (this.scrollPosition.contact_header + this.scrollHeight.contact_dialog) ;
+    this.animTriggerPosition.home = this.windowHeight;
+    this.animTriggerPosition.about_header = this.elementOffsetTop.about_header - this.windowHeight + this.triggerOffset;
+    this.animTriggerPosition.about_labels = this.elementOffsetTop.about_labels - this.windowHeight + this.triggerOffset;
+    this.animTriggerPosition.about_skills = this.elementOffsetTop.about_skills - this.windowHeight + this.triggerOffset;
+
+    this.animTriggerPosition.portfolio_header = this.elementOffsetTop.portfolio_header - this.windowHeight + this.triggerOffset;
+    this.animTriggerPosition.portfolio_filter = this.elementOffsetTop.portfolio_filter - this.windowHeight + this.triggerOffset;
+    this.animTriggerPosition.portfolio = this.elementOffsetTop.portfolio - this.windowHeight + this.triggerOffset;    
+    
+    this.animTriggerPosition.contact_header = this.elementOffsetTop.contact_header - this.windowHeight + this.triggerOffset;
+    this.animTriggerPosition.contact_dialog = this.elementOffsetTop.contact_dialog - this.windowHeight + this.triggerOffset;
+    this.animTriggerPosition.footer = this.elementOffsetTop.footer - this.windowHeight + this.triggerOffset;
+
+
+    console.log('elementOffsetService:', this.elementOffsetTop);
 
   }
 
@@ -74,44 +81,49 @@ export class AnimationTriggerService {
   @HostListener('window:scroll') 
   public animateOnScroll() {
     this.currentPagePosition = window.scrollY;
-
     this.calculateTriggerPositions();
 
+    let triggerPos = this.animTriggerPosition;
 
-    if (this.currentPagePosition >  (this.absScrollPosition.aboutHeader - this.triggerOffset)) {  
+    // this.triggerAboutSection();
+
+    
+    if (this.currentPagePosition > triggerPos.about_header) {  
       this.animationState.about_header = 'in'
     } 
-    if (this.currentPagePosition > (this.absScrollPosition.aboutLabels  - this.triggerOffset )) { 
-      this.animationState.labels = 'in' 
+    if (this.currentPagePosition > triggerPos.about_labels) { 
+      this.animationState.about_labels = 'in' 
     }
-    if (this.currentPagePosition > (this.absScrollPosition.aboutSkills  - this.triggerOffset )) { 
-      this.animationState.skills = 'in' 
+    if (this.currentPagePosition > triggerPos.about_skills) { 
+      this.animationState.about_skills = 'in' 
     }
-    if (this.currentPagePosition > (this.absScrollPosition.portfolio_header - this.triggerOffset )) { 
+    if (this.currentPagePosition > triggerPos.portfolio_header) { 
       this.animationState.portfolio_header = 'in' 
     }
-    if (this.currentPagePosition > (this.absScrollPosition.portfolio_filter - this.triggerOffset )) { 
+    if (this.currentPagePosition > triggerPos.portfolio_filter) { 
       this.animationState.portfolio_filter = 'in' 
     }
-    if (this.currentPagePosition > (this.absScrollPosition.portfolio - this.triggerOffset )) { 
+    if (this.currentPagePosition > triggerPos.portfolio) { 
       this.animationState.portfolio = 'in' 
     }
-    if (this.currentPagePosition > (this.absScrollPosition.contact_header - this.triggerOffset )) { 
+    if (this.currentPagePosition > triggerPos.contact_header) { 
       this.animationState.contact_header = 'in' 
     }
-    if (this.currentPagePosition > (this.absScrollPosition.contact_dialog - this.triggerOffset )) { 
+    if (this.currentPagePosition > triggerPos.contact_dialog) { 
       this.animationState.contact = 'in' 
     }  
-    if (this.currentPagePosition > (this.absScrollPosition.footer - this.triggerOffset )) { 
+    if (this.currentPagePosition > triggerPos.footer) { 
       this.animationState.footer = 'in' 
     }
     
     // console.log(this.currentPagePosition);
-    console.log('scrollHeight:', this.scrollHeight);
-    console.log('absScrollPosition', this.absScrollPosition);
-    console.log('triggerOffset', this.triggerOffset);
+    console.log('window.scrollY', this.currentPagePosition);
     
     
     return this.animationState;  
   }
+
+  // triggerAboutSection() {
+
+  // }
 }

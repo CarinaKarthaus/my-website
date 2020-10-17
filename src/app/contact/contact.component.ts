@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlideInAnimation } from '../animations';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 
@@ -11,17 +11,39 @@ import { AnimationTriggerService } from '../services/animationtriggerservice';
 export class ContactComponent implements OnInit {
 
   constructor(public triggerService: AnimationTriggerService) { }
-  
-  animationState = this.triggerService.animationState;
-  scrollHeight = this.triggerService.scrollHeight;
-
-  @HostListener('window:scroll') 
-  updateScrollHeight() {
-    this.scrollHeight.contact_header = document.getElementById('header').clientHeight; 
-    this.scrollHeight.contact_dialog = document.getElementById('contact_dialog').clientHeight;     
-  }
 
   ngOnInit(): void {
   }
+  
+  animationState = this.triggerService.animationState;
+
+
+   // Access Elements to detect offset to document top
+   @ViewChild('contactHeader') contactHeader: ElementRef;
+   @ViewChild('contactDialog') contactDialog: ElementRef;
+ 
+   headerOffset = 0;
+   dialogOffset = 0;
+   elementOffsetTop = this.triggerService.elementOffsetTop;
+ 
+   @HostListener('window:scroll') 
+   updateOffset() {
+       const rectHeader = this.contactHeader.nativeElement.getBoundingClientRect();
+       const rectDialog = this.contactDialog.nativeElement.getBoundingClientRect();
+ 
+       // Add element's offset to viewport-top to the offset already scrolled (pageYOffset)
+       this.headerOffset = rectHeader.top + window.pageYOffset; // - document.documentElement.clientTop;
+       this.dialogOffset = rectDialog.top + window.pageYOffset; // - document.documentElement.clientTop;
+
+       // Update offset-object from triggerService
+       this.elementOffsetTop.contact_header = this.headerOffset;
+       this.elementOffsetTop.contact_dialog = this.dialogOffset;
+ 
+       // console.log('elementOffsetTop', this.elementOffsetTop);
+     }
+
+  
+
+ 
 
 }
