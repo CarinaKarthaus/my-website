@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 
 @Component({
@@ -47,7 +46,7 @@ export class MenuComponent implements OnInit {
       this.fixedNav = true;
     } else {
       this.fixedNav = false;
-    }    
+    }        
   }
 
   /**
