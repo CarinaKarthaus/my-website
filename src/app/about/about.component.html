@@ -4,7 +4,7 @@
         <div class="header-line"></div>
     </div>
 
-    <div class="label-wrap" [@slideInChild]="animationState['about_labels']" #aboutLabels>
+    <div class="label-wrap" [@slideInChild]="animationState['about_labels']" #aboutLabels >
         <div class="label" *ngFor="let label of labels" >
             <div class="char-icon"></div>
             <h2>{{ label.labelName }}</h2>

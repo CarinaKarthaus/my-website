@@ -12,6 +12,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
+import { MatInputModule } from '@angular/material/input';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -23,7 +25,8 @@ import { ContactComponent } from './contact/contact.component';
     MenuComponent,
     AboutComponent,
     PortfolioComponent,
-    ContactComponent
+    ContactComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { ContactComponent } from './contact/contact.component';
     BrowserAnimationsModule,
     MatProgressBarModule,
     MatGridListModule,
-    RouterModule
+    RouterModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

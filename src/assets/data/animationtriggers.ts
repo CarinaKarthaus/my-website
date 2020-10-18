@@ -23,7 +23,7 @@ var animationState = {
     portfolio: 2100,
     contact_header: 2700,
     contact_dialog: 2800,
-    footer: 4000,
+    footer: 3500,
   };
 
   var animTriggerPosition = {

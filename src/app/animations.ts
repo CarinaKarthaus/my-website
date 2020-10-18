@@ -11,6 +11,7 @@ import {
 } from '@angular/animations';
 
 export const SlideInAnimation = [
+
   trigger('slideIn', [
     state(
       'in',
