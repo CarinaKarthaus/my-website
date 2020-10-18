@@ -5,8 +5,57 @@
 
     .section-header {
         padding-top: 4rem;
+        padding-bottom: 4rem;
     }
+}
+
+.contact-dialog-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+
+}
+
+.contact-dialog {
+    min-width: 36rem;
+    padding: 4rem;
 }
 .header-line {
     background : #fff;
 }
+
+.msg-area {
+    min-height: 12rem;
+}
+
+.mat-input-element {
+    caret-color: #05C2C9;
+}
+
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    background-color: #05C2C9 !important;
+    color: #05C2C9 !important
+  }
+  
+//   ::ng-deep .mat-form-field-empty.mat-form-field-label {
+//       color: #f5f5f5;
+//   }
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #05C2C9 !important;
+   }
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-error {
+    color:  #fff;
+}
+
+
+
+

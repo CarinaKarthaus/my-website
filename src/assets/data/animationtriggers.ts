@@ -8,7 +8,6 @@ var animationState = {
     'portfolio_filter': 'out',
     'portfolio': 'out',
     'contact_header': 'out',
-    'contact': 'out',
     'contact_dialog': 'out',
     'footer': 'out'
   };

@@ -20,7 +20,7 @@ export class AnimationTriggerService {
 
   calculateTriggerPositions() {
     let offsetTop = this.elementOffsetTop;
-    let triggerOffset = window.innerHeight / 1.8; // offset to trigger before element reaches top of screen 
+    let triggerOffset = window.innerHeight / 1.6; // offset to trigger before element reaches top of screen 
 
     this.triggerPos.home = window.innerHeight;
     this.triggerPos.about_header = offsetTop.about_header - triggerOffset;
@@ -81,7 +81,7 @@ export class AnimationTriggerService {
       this.animationState.contact_header = 'in' 
     }
     if (this.currentPagePosition > this.triggerPos.contact_dialog) { 
-      this.animationState.contact = 'in' 
+      this.animationState.contact_dialog = 'in' 
     }  
     if (this.currentPagePosition > this.triggerPos.footer) { 
       this.animationState.footer = 'in' 

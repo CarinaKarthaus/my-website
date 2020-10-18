@@ -14,6 +14,8 @@ import { RouterModule } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
 import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './footer/footer.component';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -35,7 +37,9 @@ import { FooterComponent } from './footer/footer.component';
     MatProgressBarModule,
     MatGridListModule,
     RouterModule,
-    MatInputModule
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

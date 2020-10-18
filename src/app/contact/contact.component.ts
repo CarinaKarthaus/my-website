@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlideInAnimation } from '../animations';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -9,6 +10,16 @@ import { AnimationTriggerService } from '../services/animationtriggerservice';
   animations: [ SlideInAnimation ]
 })
 export class ContactComponent implements OnInit {
+
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'Please enter an email-address';
+    }
+
+    return this.email.hasError('email') ? 'Please enter a valid email' : '';
+  }
 
   constructor(public triggerService: AnimationTriggerService) { }
 
