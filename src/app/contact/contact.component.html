@@ -7,25 +7,33 @@
         <div class="header-line"></div>
     </div>
     <div class="contact-dialog-wrap" [@slideIn]="animationState['contact_dialog']" #contactDialog>
+        <span>Got feedback or want to work together?</span>
         <div class="contact-dialog">
+ 
 
-            <mat-form-field appearance="fill">
-                <mat-label >Your name</mat-label>
-                <input matInput>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="fill">
-                <mat-label>Your email</mat-label>
-                <input matInput placeholder="name@example.com" [formControl]="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="fill">
-                <mat-label>Your message</mat-label>
-                <textarea matInput class="msg-area"></textarea>
-            </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Your name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Your email</mat-label>
+                    <input matInput placeholder="name@example.com" [formControl]="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Your message</mat-label>
+                    <textarea matInput class="msg-area"></textarea>
+                </mat-form-field>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" type="submit" (click)="submit()">Submit</button>
+                </mat-card-actions>
+
+ 
 
         </div>
+
 
 
     </div>

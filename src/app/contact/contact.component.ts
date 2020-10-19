@@ -11,6 +11,10 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
 
+  submit(){
+    console.log('workin');
+  }
+
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {

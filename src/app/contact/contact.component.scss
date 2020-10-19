@@ -2,10 +2,15 @@
     background-color: #252934;
     color: #fff;
     min-height: 30vh;
+    font-size: 1rem;
 
     .section-header {
         padding-top: 4rem;
         padding-bottom: 4rem;
+    }
+
+    span {
+        color:  #05C2C9;
     }
 }
 
@@ -24,6 +29,18 @@
 }
 .header-line {
     background : #fff;
+}
+
+.mat-raised-button.mat-primary {
+    background-color: #01A1A7;
+    transition: 125ms all ease-in-out;
+    font-family: inherit;
+    font-weight: 800;
+    
+
+    &:hover {
+        background-color:  #05C2C9;
+    }
 }
 
 .msg-area {
@@ -50,10 +67,16 @@
 
 mat-form-field {
     width: 100%;
+    font-family: inherit;
 }
 
 mat-error {
     color:  #fff;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
 }
 
 

@@ -16,6 +16,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './footer/footer.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -39,7 +42,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
