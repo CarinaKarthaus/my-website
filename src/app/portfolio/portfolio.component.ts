@@ -16,12 +16,28 @@ export class PortfolioComponent implements OnInit {
   currentFilter = '';
   projects = projects;
   visibleProjects = this.projects;
+  columns = 3;
 
   constructor(public triggerService: AnimationTriggerService ) { }
 
   ngOnInit(): void {
     
   }
+
+  /**
+   * Adapts no. of columns per grid-row based on screen-width
+   */
+  @HostListener('window:resize') 
+  arrangeGrid() {
+    let screenWidth = window.innerWidth;
+
+    if (screenWidth >= 1200) { this.columns = 3}
+    if (screenWidth < 1200) { this.columns = 2 }
+    if (screenWidth < 800 ) {this.columns = 1}   
+    
+  }
+
+
 
   // Access Elements to detect offset to document top
   @ViewChild('portfolioHeader') portfolioHeader: ElementRef;

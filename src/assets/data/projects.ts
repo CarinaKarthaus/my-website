@@ -1,7 +1,7 @@
 const projects = [ 
     { 
       title: 'El Pollo Loco', 
-      details: 'A JavaScript-based jump-and-run-game.', 
+      details: 'JavaScript-based jump-and-run-game.', 
       app_link: 'http://carina-karthaus.developerakademie.com/el_pollo_loco/', 
       github_link: 'https://github.com/CarinaKarthaus/el_pollo_loco', 
       img: 'el_pollo_loco3.png',
@@ -11,7 +11,7 @@ const projects = [
     },
     {
       title: 'JOIN - The Task Manager', 
-      details: 'Create, assign and manage tasks using Eisenhower\'s urgent-important-principle.', 
+      details: 'Tasks management system based on Eisenhower\'s urgent-important-principle.', 
       app_link: 'http://carina-karthaus.developerakademie.com/task-management/', 
       github_link: 'https://github.com/CarinaKarthaus/task-management', 
       img: 'join.png',
@@ -29,7 +29,7 @@ const projects = [
     },
     {
       title: 'Simple CRM', 
-      details: 'A smart & simple webbased CRM system.', 
+      details: 'Smart & simple webbased CRM system.', 
       app_link: ' ##########PLACEHOLDER#####', 
       github_link: '##########PLACEHOLDER#####', 
       img: 'simple-crm.png',

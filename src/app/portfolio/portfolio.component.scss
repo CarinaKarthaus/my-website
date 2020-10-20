@@ -61,7 +61,7 @@ mat-grid-tile {
 .project-wrap {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     opacity: 0;
     transition: 225ms all ease-in;
@@ -117,3 +117,65 @@ mat-grid-tile {
     margin-top: 1rem;
 }
 
+@media (max-width: 1200px) {
+    .filter-row {
+        margin: 0 2rem 1rem 2rem;
+    }
+    .filter {
+        font-size: 1.3rem;
+   }
+    mat-grid-list {
+        margin: 0 2rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .filter-row {
+        margin-bottom: 0.5rem;
+    }
+  
+    .filter {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+   }
+
+   mat-grid-list {
+       margin: 0 2rem;
+   }
+
+
+   
+}
+
+@media (max-width: 800px) {
+   .filter {
+        font-size: 1rem;
+   }
+
+   
+}
+
+@media (max-width: 450px) {
+    .filter-row {
+        margin: 0;
+    }
+    .filter {
+        font-size: 0.9rem;
+    }
+    mat-grid-list {
+        margin: 0;
+    }
+    .project-intro {
+        font-size: 1rem;
+        span {
+            font-size: 0.8rem;
+        }
+    }
+
+    .mat-raised-button {
+        line-height: 30px;
+        font-size: 0.8rem;
+    }
+ 
+    
+ }

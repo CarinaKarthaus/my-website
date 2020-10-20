@@ -11,6 +11,8 @@
 
     span {
         color:  #05C2C9;
+        text-align: center;
+        padding: 0.5rem 1rem;
     }
 }
 
@@ -79,6 +81,17 @@ mat-card-actions {
     justify-content: flex-end;
 }
 
+@media (max-width: 800px) {
+    .contact-dialog {
+        min-width: 80%;
+        font-size: 0.9rem;
+    }
+}
 
+@media (max-width: 450px) {
+    .contact-dialog {
+        font-size: 0.8rem;
+    }
+}
 
 

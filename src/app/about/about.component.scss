@@ -1,6 +1,7 @@
 .label-wrap {
     display: flex;
     justify-content: space-evenly;
+
 }
 .label {
     display: flex;
@@ -55,7 +56,8 @@
 .bar-wrap {
     width: 50%;
     border-radius: 5%;
-    padding-right: 4rem;
+    padding-right: 2rem;
+    font-size: 1rem;
 }
 
 .bar {
@@ -83,10 +85,10 @@
     position: absolute;
     text-align: center;
     width: 25%;
-    max-width: 12rem;
+    min-width: 9rem;
+    max-width: 11rem;
     height: 100%;
     color: white;
-    font-size: 1rem;
     background-color: #05C2C9;
     left: 0;
     top: 0;
@@ -102,12 +104,89 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 1rem;
-    // font-weight: bold;
 }
 
 
 mat-progress-bar {
     padding: 1rem 0;
     position: relative;
+}
+
+@media (max-width: 1400px) {
+    .bar-wrap {
+        padding-right: 0;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .label-wrap {
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+
+    .char-icon {
+        width: 7rem;
+        height: 7rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .label-wrap {
+        p {
+            font-size: 0.9rem;
+        }
+    }
+
+    .char-icon {
+        width: 6rem;
+        height: 6rem;
+    }
+    .skills-wrap {
+        padding: 4rem 0 2rem 0;
+        flex-direction: column;
+    }
+
+    .bio-wrap {
+        width: 100%;
+        padding-bottom: 4rem;
+        font-size: 1.2rem;
+
+        p {
+            font-size: 1rem;
+        }
+
+    }
+
+    .bar-wrap {
+        width: 80%;
+        font-size: 0.9rem;
+
+    }
+}
+
+@media (max-width: 800px) {
+    .bar-wrap {
+        width: 100%;
+    }
+    .bar-tag {
+        min-width: 8rem;
+        max-width: 9rem;
+    }
+    .bar-value {
+        padding-right: 0.5rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .bar-wrap {
+        font-size: 0.8rem;
+    }
+    .bar-tag {
+        // max-width: 8rem;
+    }
+    .bar-value {
+
+    }
 }
