@@ -101,7 +101,7 @@ export const SlideInAnimation = [
     transition('out => in', [
       group([
         animate(
-          '1000ms ease-in',
+          '800ms ease-in-out',
           style({
             opacity: '1',
             transform: 'translateY(0)',
@@ -124,7 +124,7 @@ export const SlideInAnimation = [
         'mat-grid-tile',
         stagger('500ms', [
           animate(
-            '1000ms ease-in',
+            '800ms ease-in-out',
             keyframes([
               style({ opacity: '0', transform: 'translateY(150px)' }),
               style({ opacity: '1', transform: 'translateY(0)' }),

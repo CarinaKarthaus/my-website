@@ -11,7 +11,7 @@ const projects = [
     },
     {
       title: 'JOIN - The Task Manager', 
-      details: 'An app to create, assign and manage tasks using Eisenhower\'s urgent-important-principle.', 
+      details: 'Create, assign and manage tasks using Eisenhower\'s urgent-important-principle.', 
       app_link: 'http://carina-karthaus.developerakademie.com/task-management/', 
       github_link: 'https://github.com/CarinaKarthaus/task-management', 
       img: 'join.png',

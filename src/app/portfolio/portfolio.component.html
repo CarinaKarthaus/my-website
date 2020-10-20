@@ -1,11 +1,11 @@
-<div class="section-container portfolio" >
+<div class="section-container portfolio">
 
     <div class="section-header" [@slideIn]="animationState['portfolio_header']" #portfolioHeader>Portfolio
         <div class="header-line"></div>
     </div>
-    <div class="portfolio-grid-wrap" >
+    <div class="portfolio-grid-wrap">
 
-        <div class="filter-row flex" [@slideInUpwards]="animationState['portfolio_filter']"  #portfolioFilter>
+        <div class="filter-row flex" [@slideInUpwards]="animationState['portfolio_filter']" #portfolioFilter>
             <div class="filter" [class.active]="currentFilter === ''" (click)="updateFilter()">All</div>
             <div class="filter" [class.active]="currentFilter === 'Angular'" (click)="updateFilter('Angular')">Angular
             </div>
@@ -14,11 +14,21 @@
         </div>
 
         <div #portfolioGrid>
-            <mat-grid-list cols="3" rowHeight="1.5:1" [@slideInUpwardsChild]="animationState['portfolio']" >
-                <mat-grid-tile *ngFor="let project of visibleProjects" >
+            <mat-grid-list cols="3" rowHeight="4:3" [@slideInUpwardsChild]="animationState['portfolio']">
+                <mat-grid-tile *ngFor="let project of visibleProjects">
                     <!-- <img src="{{'./assets/img/projects/'+ project.img }}" > -->
-                    <span>{{ project.title }}</span>
-
+                    <div class="project-wrap">
+                        <div class="project-intro">
+                            <div>{{ project.title }}</div>
+                            <span>{{ project.details }}</span>
+                            
+                            <div class="separator"></div>
+                        </div>
+                       
+                        <div class="show-project-btn">
+                            <a mat-raised-button color="accent" href="{{ project.app_link }}" >Try it yourself</a>
+                        </div>
+                    </div>
                 </mat-grid-tile>
             </mat-grid-list>
         </div>
