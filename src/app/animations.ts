@@ -11,7 +11,6 @@ import {
 } from '@angular/animations';
 
 export const SlideInAnimation = [
-
   trigger('slideIn', [
     state(
       'in',
@@ -62,25 +61,54 @@ export const SlideInAnimation = [
     ]),
   ]),
 
+  trigger('slideInChild2', [
+    state(
+      'out',
+      style({
+        opacity: 0,
+        transform: 'translateX(-150px)',
+      })
+    ),
+    state(
+      'in',
+      style({
+        opacity: 1,
+        transform: 'translateX(0)',
+      })
+    ),
+    transition('out => in', [
+      query(
+        '.label',
+        stagger('500ms', [
+          animate(
+            '800ms ease-in',
+            style({ opacity: 1, transform: 'translateX(0)' })
+          ),
+        ]),
+        { optional: true }
+      ),
+    ]),
+  ]),
+
   trigger('slideInReverseChild', [
-      transition('out => in', [
-        query('div', style({ opacity: 0, transform: 'translateX(150px)' }), {
-          optional: true,
-        }),
-        // Each child appears sequentially with the delay of 75ms
-        query(
-          'div',
-          stagger('75ms', [
-            animate(
-              '700ms ease-in',
-              keyframes([
-                style({ opacity: '0', transform: 'translateX(150px)' }),
-                style({ opacity: '1', transform: 'translateX(0)' }),
-              ])
-            )
-          ])
-        )
-      ]),
+    transition('out => in', [
+      query('div', style({ opacity: 0, transform: 'translateX(150px)' }), {
+        optional: true,
+      }),
+      // Each child appears sequentially with the delay of 75ms
+      query(
+        'div',
+        stagger('75ms', [
+          animate(
+            '700ms ease-in',
+            keyframes([
+              style({ opacity: '0', transform: 'translateX(150px)' }),
+              style({ opacity: '1', transform: 'translateX(0)' }),
+            ])
+          ),
+        ])
+      ),
+    ]),
   ]),
 
   trigger('slideInUpwards', [

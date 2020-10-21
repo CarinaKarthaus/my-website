@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faGithub, faLinkedinIn, faXing } from '@fortawesome/free-brands-svg-icons';
 
 
 
@@ -45,9 +47,12 @@ import { MatCardModule } from '@angular/material/card';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule 
+    MatCardModule,
+    FontAwesomeModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

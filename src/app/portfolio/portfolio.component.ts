@@ -51,6 +51,7 @@ export class PortfolioComponent implements OnInit {
 
   @HostListener('window:scroll') 
   updateOffset() {
+    this.arrangeGrid();
       const rectHeader = this.portfolioHeader.nativeElement.getBoundingClientRect();
       const rectFilter = this.portfolioFilter.nativeElement.getBoundingClientRect();
       const rectPortfolio = this.portfolioGrid.nativeElement.getBoundingClientRect();

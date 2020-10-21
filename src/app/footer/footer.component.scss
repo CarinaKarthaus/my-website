@@ -46,16 +46,17 @@ mat-icon {
     width: 20rem;
     margin-top: 2rem;
 
-    img {
-        width: 2rem;
-        filter: invert(100%) sepia(0%) saturate(7408%) hue-rotate(87deg) brightness(123%) contrast(92%);   // results in #f5f5f5
+
+    fa-icon {
+        font-size: 2.5rem;
+        color: #f5f5f5;
         padding: 1rem;
         transition: 225ms all ease-in-out;
-
+    
         &:hover {
-            filter: invert(20%) sepia(50%) saturate(7497%) hue-rotate(325deg) brightness(93%) contrast(90%);
+            color: #e31b6d;
         }
-    }
+    }   
 }
 
 .link-wrap {

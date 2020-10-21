@@ -1,8 +1,9 @@
 .label-wrap {
     display: flex;
     justify-content: space-evenly;
-
+    transition: all 800ms ease-in-out;
 }
+
 .label {
     display: flex;
     flex-direction: column;
@@ -152,9 +153,11 @@ mat-progress-bar {
         width: 100%;
         padding-bottom: 4rem;
         font-size: 1.2rem;
+        margin-right: 0;
 
         p {
             font-size: 1rem;
+
         }
 
     }
@@ -167,6 +170,9 @@ mat-progress-bar {
 }
 
 @media (max-width: 800px) {
+    .bio-wrap p {
+        width: 70%;
+    }
     .bar-wrap {
         width: 100%;
     }
@@ -180,13 +186,11 @@ mat-progress-bar {
 }
 
 @media (max-width: 450px) {
+    .bio-wrap p {
+        width: 100%;
+    }
     .bar-wrap {
         font-size: 0.8rem;
     }
-    .bar-tag {
-        // max-width: 8rem;
-    }
-    .bar-value {
-
-    }
+ 
 }

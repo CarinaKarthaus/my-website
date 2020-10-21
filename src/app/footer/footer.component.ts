@@ -1,5 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faGithub, faXing, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +11,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class FooterComponent implements OnInit {
   @ViewChild('home') private parentRef: ElementRef<HTMLElement>;
 
-  constructor(private viewportScroller: ViewportScroller) { }
+ constructor(private viewportScroller: ViewportScroller, library: FaIconLibrary) {
+    // Add icons to library to make them accessible
+    library.addIcons(faGithub, faLinkedinIn, faXing);
+  }
 
   ngOnInit(): void {
   }

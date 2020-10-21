@@ -11,12 +11,16 @@ import { labels, skills } from '../../assets/data/skills';
   animations: [ SlideInAnimation ]
 })
 export class AboutComponent implements OnInit {
-  
-  constructor(public triggerService: AnimationTriggerService) { }
-
-  animationState = this.triggerService.animationState;
+  animationState;
   labels = labels;
   skills = skills;
+
+
+  constructor(public triggerService: AnimationTriggerService) {
+    this.animationState = this.triggerService.animationState;
+   }
+
+
 
   ngOnInit(): void {
     setInterval(() => {
