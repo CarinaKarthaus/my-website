@@ -20,7 +20,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faGithub, faLinkedinIn, faXing } from '@fortawesome/free-brands-svg-icons';
+import { ImprintComponent } from './imprint/imprint.component';
+import { DataProtectionComponent } from './data-protection/data-protection.component';
+import { faGithub, faXing, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -33,7 +36,9 @@ import { faGithub, faLinkedinIn, faXing } from '@fortawesome/free-brands-svg-ico
     AboutComponent,
     PortfolioComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
+    ImprintComponent,
+    DataProtectionComponent
   ],
   imports: [
     BrowserModule,
@@ -54,5 +59,9 @@ import { faGithub, faLinkedinIn, faXing } from '@fortawesome/free-brands-svg-ico
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor (library: FaIconLibrary) {
+    // Add icons to library to make them accessible
+    library.addIcons(faGithub, faLinkedinIn, faXing, faBars);
+  }
 
  }

@@ -1,9 +1,17 @@
-<nav [class.fixed-nav]="fixedNav" #nav>
+<nav [class.d-none]="fixedNav" #nav>
     <div class="link-wrap">
         <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
         <a href="#about" [class.active]="navPositionIndicator.aboutPosition" >About</a>
         <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition" >Portfolio</a>
         <a href="#contact" [class.active]="navPositionIndicator.contactPosition" >Contact</a>
-        
+    </div>
+</nav>
+<nav [class.fixed-nav]="fixedNav" [class.d-none]="!fixedNav" #nav>
+    <div class="link-wrap">
+        <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
+        <a href="#about" [class.active]="navPositionIndicator.aboutPosition" >About</a>
+        <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition" >Portfolio</a>
+        <a href="#contact" [class.active]="navPositionIndicator.contactPosition" >Contact</a>
+        <fa-icon [icon]="['fas', 'bars']"></fa-icon>
     </div>
 </nav>

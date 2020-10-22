@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -22,6 +23,7 @@ export class MenuComponent implements OnInit {
   constructor(public triggerService: AnimationTriggerService) {}
 
   triggerPos = this.triggerService.animTriggerPosition;
+  elementOffsetTop = this.triggerService.elementOffsetTop;
 
 
   @ViewChild('nav') nav: ElementRef;
@@ -53,21 +55,21 @@ export class MenuComponent implements OnInit {
    * Checks section currently visible and assigns/removes active-link-style accordingly
    */
   checkActiveSection() {
-    // let triggerOffset = window.innerHeight / 1.5;
+    let navSwitchOffset = window.innerHeight / 2;
 
-    if (this.currentPagePosition <= this.triggerPos.home) {
+    if (this.currentPagePosition <= this.elementOffsetTop.home - navSwitchOffset) {
       this.resetNavClasses();
       this.navPositionIndicator.homePosition = true;
     }
-    if (this.currentPagePosition > this.triggerPos.about_header) {
+    if (this.currentPagePosition > this.elementOffsetTop.about_header - navSwitchOffset) {
       this.resetNavClasses();
       this.navPositionIndicator.aboutPosition = true;
     }
-    if (this.currentPagePosition > this.triggerPos.portfolio_header) {
+    if (this.currentPagePosition > this.elementOffsetTop.portfolio_header - navSwitchOffset) {
       this.resetNavClasses();
       this.navPositionIndicator.portfolioPosition = true;
     }
-    if (this.currentPagePosition > this.triggerPos.contact_header) {
+    if (this.currentPagePosition > this.elementOffsetTop.contact_header - navSwitchOffset) {
       this.resetNavClasses();
       this.navPositionIndicator.contactPosition = true;
     }

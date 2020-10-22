@@ -6,7 +6,7 @@
 
     <div class="label-wrap" [style.opacity]="animationState['about_labels'] == 'out' ? '0' : '1'" [@slideInChild]="animationState['about_labels']" #aboutLabels >
         <div class="label" *ngFor="let label of labels" >
-            <div class="char-icon"></div>
+            <div class="label-icon"></div>
             <h2>{{ label.labelName }}</h2>
             <p>{{ label.labelDescr }}</p>
         </div>
@@ -20,7 +20,7 @@
                 quo? Doloribus molestias repellat?</p>
         </div>
 
-        <div class="bar-wrap" [@slideInReverseChild]="animationState['about_skills']" >
+        <div class="bar-wrap" [style.opacity]="animationState['about_skills'] == 'out' ? '0' : '1'" [@slideInReverseChild]="animationState['about_skills']" >
             <div class="bar" *ngFor="let skill of skills">
                 <div class="bar-scale">
                     <div class="bar-fill" [style.width]="skill.skillLevel + '%'"></div>

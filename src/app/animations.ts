@@ -29,7 +29,7 @@ export const SlideInAnimation = [
     transition('out => in', [
       group([
         animate(
-          '800ms ease-in',
+          '400ms ease-in',
           style({
             opacity: '1',
             transform: 'translateX(0)',
@@ -50,38 +50,9 @@ export const SlideInAnimation = [
       // Each child (=label) will appear sequentially with the delay of 500ms
       query(
         '.label',
-        stagger('500ms', [
+        stagger('225ms', [
           animate(
-            '800ms ease-in',
-            style({ opacity: 1, transform: 'translateX(0)' })
-          ),
-        ]),
-        { optional: true }
-      ),
-    ]),
-  ]),
-
-  trigger('slideInChild2', [
-    state(
-      'out',
-      style({
-        opacity: 0,
-        transform: 'translateX(-150px)',
-      })
-    ),
-    state(
-      'in',
-      style({
-        opacity: 1,
-        transform: 'translateX(0)',
-      })
-    ),
-    transition('out => in', [
-      query(
-        '.label',
-        stagger('500ms', [
-          animate(
-            '800ms ease-in',
+            '225ms ease-in',
             style({ opacity: 1, transform: 'translateX(0)' })
           ),
         ]),
@@ -92,17 +63,17 @@ export const SlideInAnimation = [
 
   trigger('slideInReverseChild', [
     transition('out => in', [
-      query('div', style({ opacity: 0, transform: 'translateX(150px)' }), {
+      query('div', style({ opacity: 0, transform: 'translateX(50px)' }), {
         optional: true,
       }),
       // Each child appears sequentially with the delay of 75ms
       query(
         'div',
-        stagger('75ms', [
+        stagger('25ms', [
           animate(
-            '700ms ease-in',
+            '75ms ease-in-out',
             keyframes([
-              style({ opacity: '0', transform: 'translateX(150px)' }),
+              style({ opacity: '0', transform: 'translateX(50px)' }),
               style({ opacity: '1', transform: 'translateX(0)' }),
             ])
           ),
@@ -129,7 +100,7 @@ export const SlideInAnimation = [
     transition('out => in', [
       group([
         animate(
-          '800ms ease-in-out',
+          '225ms ease-in-out',
           style({
             opacity: '1',
             transform: 'translateY(0)',
@@ -150,7 +121,7 @@ export const SlideInAnimation = [
       // Each child will appear sequentially with the delay of 500ms
       query(
         'mat-grid-tile',
-        stagger('500ms', [
+        stagger('225ms', [
           animate(
             '800ms ease-in-out',
             keyframes([
