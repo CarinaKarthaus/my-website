@@ -1,19 +1,16 @@
-import { AfterViewInit, Component, ElementRef, Host, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Host, HostListener, OnInit, ViewChild } from '@angular/core';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
-import {MatSidenav} from '@angular/material/sidenav';
-import { faAdjust } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
+  styleUrls: ['./menu.component.scss', './menu.component.responsive.scss'],
 })
-export class MenuComponent implements OnInit, AfterViewInit {
+export class MenuComponent implements OnInit {
   currentPagePosition: number;
   clientWidth: number;
   fixedNav = false;
-  activeSidebar = false;
 
   // Indicates section currently visible in viewport
   navPositionIndicator = {
@@ -29,26 +26,22 @@ export class MenuComponent implements OnInit, AfterViewInit {
   triggerPos = this.triggerService.animTriggerPosition;
   elementOffsetTop = this.triggerService.elementOffsetTop;
 
-
-
-
   isMobile: boolean;
-  maxWidthMobile = 800;
+  maxWidthMobile = 850;
 
   ngOnInit(): void {
-    this.adjustNav();
   }
-
-  ngAfterViewInit() {
-
-  }
-
-
 
  
   /**
-   * Check current position to adjust nav-bar & active-style for links
+   * Check current position & client width to adjust nav-bar & active-style for links
    */
+
+  @HostListener('window:resize')
+  activateMobileNav() {
+    this.adjustNav();
+  }
+
   @HostListener('window:scroll')
   adjustNav() {
     this.clientWidth = window.innerWidth;
@@ -63,11 +56,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.checkActiveSection();
   }
 
-  @HostListener('window:onload') 
-    checkNav() {
-      this.adjustNav;
-    }
-   
+  
 
   // Activate fixed nav on viewport-top on scroll 
 
@@ -81,9 +70,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
       this.fixedNav = true;
     } else {
       this.fixedNav = false;
-    }      
-    console.log('isMobile', this.isMobile);  
-       
+    }            
   }
 
   /**

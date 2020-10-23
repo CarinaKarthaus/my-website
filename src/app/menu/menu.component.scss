@@ -14,21 +14,20 @@ nav {
         align-items: center;
         font-size: 1.5rem;
         text-transform: uppercase;
-    
-        a {
-            color: #fff;
-            text-decoration: none;
-            transition: 125ms all ease-in-out;
+    }
 
-            &:hover {
-                color: #e31b6d;
-            }
-        }
+}
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: 125ms all ease-in-out;
+
+    &:hover {
+        color: #e31b6d;
     }
 }
 
 .fixed-nav {
-    // opacity: 0;
     position: fixed;
     top: 0;
     z-index: 5;
@@ -45,31 +44,15 @@ display: none;
     color: #e31b6d !important;
 }
 
-.mobile-overlay {
-    width: 100vw;
-    top: 0;
-    height: 100vh;
-    background-color: #1b242f;
-    position: absolute;
-    opacity: 0.4;
-    z-index: 11;
-    transition: 225ms all ease-in-out;
-}
-
-.active-sidebar {
-    transform: translateX(0) !important;
-}
-
-.opacity-0 {
-    opacity: 0;
-    // z-index: -1 !important;
-}
+// .opacity-0 {
+//     opacity: 0;
+//     // z-index: -1 !important;
+// }
 
 .sidenav-container {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    // border: 1px solid rgba(0, 0, 0, 0.5);
     background-color: unset;
     display: none;
   }
@@ -85,123 +68,13 @@ mat-drawer-container {
     position: absolute;
     top: 0;
     height: 100vh;
-    z-index: 20;
 }
 
-@media (max-width: 1200px) {
-    nav .link-wrap {
-        width: 60%;
-    }
-}
-@media (max-width: 1000px) {
-    nav .link-wrap {
-        width: 80%;
-        font-size: 1.4rem;
-    }
+// Remove focus from sidenav-elements
+textarea:focus, input:focus{
+    outline: none !important;
 }
 
-@media (max-width: 850px) {
-    // nav .link-wrap {
-    //     width: 90%;
-    //     font-size: 1.2rem;
-    // }
-
-    .regularNav {
-        display: none;
-    }
+*:focus {
+    outline: none;
 }
-
-@media (max-width: 850px) and (max-height: 400px) {
-    .sidenav-container {
-        display: flex;
-    }
-    nav {
-        position: fixed;
-        justify-content: flex-end;
-        align-items: center;
-        top: 0;
-        border-bottom: 0.2rem solid #04c2c9;
-
-        .link-wrap {
-            position: absolute;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-end;
-            top: 0;
-            right: 0;
-            width: 10rem;
-            height: 100vh;
-            padding-top: 20vh;
-            font-size: 1rem;
-            background-color: #1b242f;
-            border-left: 1px solid #f5f5f5;
-            z-index: 15;
-            transform: translateX(10rem);
-            transition: 225ms all ease-in-out;
-
-            a {
-                padding-right: 1rem;
-                padding-bottom: 2rem;
-            }
-    
-        }
-    }
-    fa-icon {
-        padding: 0.5rem 1rem;
-        font-size: 2rem;
-        color: #f5f5f5;
-        z-index: 20;
-    }
-}
-
-@media (max-width: 450px) {
-
-    .sidenav-container {
-        display: flex;
-    }
-    nav {
-        position: fixed;
-        justify-content: flex-end;
-        align-items: center;
-        top: 0;
-        border-bottom: 0.2rem solid #04c2c9;
-
-      
-        // .link-wrap {
-        //     position: absolute;
-        //     flex-direction: column;
-        //     justify-content: flex-start;
-        //     align-items: flex-end;
-        //     top: 0;
-        //     right: 0;
-        //     width: 10rem;
-        //     height: 100vh;
-        //     padding-top: 20vh;
-        //     font-size: 1rem;
-        //     background-color: #1b242f;
-        //     border-left: 1px solid #f5f5f5;
-        //     z-index: 15;
-        //     transform: translateX(10rem);
-        //     transition: 225ms all ease-in-out;
-
-        //     a {
-        //         padding-right: 1rem;
-        //         padding-bottom: 2rem;
-        //     }
-        // }
-    }
-    fa-icon {
-        padding: 0.5rem 1rem;
-        font-size: 2rem;
-        color: #f5f5f5;
-        z-index: 20;
-    }
-    // .link-wrap {
-    //     display: flex;
-    //     flex-direction: column;
-
-
-    // }
-   
-}
-

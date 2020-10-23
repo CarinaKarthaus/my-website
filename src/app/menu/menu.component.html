@@ -1,33 +1,14 @@
-<nav [class.d-none]="fixedNav" class="regularNav"  #nav>
-    <div class="link-wrap" [class.active-sidebar]="activeSidebar">
+<!-- Regular nav-bar for regular screen size-->
+<nav [class.d-none]="fixedNav"  class="regularNav" #nav>
+    <div class="link-wrap" >
         <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
         <a href="#about" [class.active]="navPositionIndicator.aboutPosition">About</a>
         <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition">Portfolio</a>
         <a href="#contact" [class.active]="navPositionIndicator.contactPosition">Contact</a>
     </div>
-    <!-- <fa-icon [icon]="['fas', 'bars']" (click)="drawer.toggle()"></fa-icon> -->
-    <!-- <div class="mobile-overlay" *ngIf="activeSidebar" [class.opacity-0]="!activeSidebar"></div> -->
 </nav>
 
-<mat-drawer-container class="sidenav-container" autosize *ngIf="isMobile">
-    <nav [class.d-none]="fixedNav" >
-        <fa-icon [icon]="['fas', 'bars']" (click)="drawer.toggle()"></fa-icon>
-    </nav>
-    <mat-drawer #drawer class="sidenav" mode="over" side="end">
-
-        <div class="link-wrap" [class.active-sidebar]="activeSidebar">
-            <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
-            <a href="#about" [class.active]="navPositionIndicator.aboutPosition">About</a>
-            <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition">Portfolio</a>
-            <a href="#contact" [class.active]="navPositionIndicator.contactPosition">Contact</a>
-        </div>
-
-    </mat-drawer>
-
-  
-
-  
-  </mat-drawer-container>
+<!-- Fixed nav-bar for regular screen - replaces regular nav when toggle position reached -->
 
 <nav [class.fixed-nav]="fixedNav" [class.d-none]="!fixedNav">
     <div class="link-wrap">
@@ -37,3 +18,21 @@
         <a href="#contact" [class.active]="navPositionIndicator.contactPosition">Contact</a>
     </div>
 </nav>
+
+
+<!-- Responsive nav-bar - only active on mobile screens (max. width <= 850px) -->
+<mat-drawer-container class="sidenav-container" autosize *ngIf="isMobile">
+    <nav >
+        <fa-icon [icon]="['fas', 'bars']" (click)="drawer.toggle()"></fa-icon>
+    </nav>
+    <mat-drawer #drawer class="sidenav" mode="push" >
+
+        <div class="link-wrap" >
+            <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
+            <a href="#about" [class.active]="navPositionIndicator.aboutPosition">About</a>
+            <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition">Portfolio</a>
+            <a href="#contact" [class.active]="navPositionIndicator.contactPosition">Contact</a>
+        </div>
+
+    </mat-drawer>
+</mat-drawer-container>

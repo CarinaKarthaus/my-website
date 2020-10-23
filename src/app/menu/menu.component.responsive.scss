@@ -1,0 +1,63 @@
+// Responsive design for menu
+
+@media (max-width: 1200px) {
+    nav .link-wrap {
+        width: 60%;
+    }
+}
+@media (max-width: 1000px) {
+    nav .link-wrap {
+        width: 80%;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .regularNav {
+        display: none;
+    }
+    .sidenav-container {
+        display: flex;
+        transition: 225ms all ease-in-out;
+    }
+
+    nav {
+        position: fixed;
+        justify-content: flex-end;
+        align-items: center;
+        top: 0;
+        border-bottom: 0.2rem solid #04c2c9;
+    }
+
+    fa-icon {
+        padding: 0.5rem 2rem;
+        font-size: 2rem;
+        color: #f5f5f5;
+    }
+    .link-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        top: 0;
+        right: 0;
+        padding-top: 20vh;
+        font-size: 1rem;
+
+        a {
+            padding-right: 1rem;
+            margin-bottom: 2rem;
+        }
+        }
+}
+
+
+@media (max-width: 450px) {
+
+    fa-icon {
+        padding: 0.5rem 1rem;
+    }
+     
+}
+
