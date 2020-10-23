@@ -1,5 +1,7 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Host, HostListener, OnInit, ViewChild } from '@angular/core';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
+import {MatSidenav} from '@angular/material/sidenav';
+import { faAdjust } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -7,9 +9,11 @@ import { AnimationTriggerService } from '../services/animationtriggerservice';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, AfterViewInit {
   currentPagePosition: number;
+  clientWidth: number;
   fixedNav = false;
+  activeSidebar = false;
 
   // Indicates section currently visible in viewport
   navPositionIndicator = {
@@ -26,29 +30,60 @@ export class MenuComponent implements OnInit {
   elementOffsetTop = this.triggerService.elementOffsetTop;
 
 
-  @ViewChild('nav') nav: ElementRef;
-
-  ngOnInit(): void {}
 
 
+  isMobile: boolean;
+  maxWidthMobile = 800;
+
+  ngOnInit(): void {
+    this.adjustNav();
+  }
+
+  ngAfterViewInit() {
+
+  }
+
+
+
+ 
   /**
    * Check current position to adjust nav-bar & active-style for links
    */
   @HostListener('window:scroll')
   adjustNav() {
+    this.clientWidth = window.innerWidth;
+    this.isMobile = this.clientWidth <= this.maxWidthMobile;
     this.currentPagePosition = window.scrollY;
-    this.toggleFixedNav();
+
+    if (!this.isMobile) {
+      this.toggleFixedNav();
+    } else {
+      this.fixedNav = false;
+    }
     this.checkActiveSection();
   }
 
+  @HostListener('window:onload') 
+    checkNav() {
+      this.adjustNav;
+    }
+   
+
   // Activate fixed nav on viewport-top on scroll 
+
+  @ViewChild('nav') nav: ElementRef;
+
   toggleFixedNav() {
     let navHeight = this.nav.nativeElement.offsetHeight; 
-    if (this.currentPagePosition > (this.triggerPos.home + navHeight )) {
+    let triggerPositionReached = this.currentPagePosition > (this.triggerPos.home + navHeight );
+
+    if ( triggerPositionReached) {
       this.fixedNav = true;
     } else {
       this.fixedNav = false;
-    }        
+    }      
+    console.log('isMobile', this.isMobile);  
+       
   }
 
   /**

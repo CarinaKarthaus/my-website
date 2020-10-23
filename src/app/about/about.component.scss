@@ -184,16 +184,13 @@ mat-progress-bar {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .label {
         flex: 1 0 40%;
         padding: 0 0.5rem;
     }
     .bio-wrap p {
         width: 70%;
-    }
-    .bar-wrap {
-        width: 100%;
     }
     .bar-tag {
         min-width: 8rem;
@@ -226,6 +223,7 @@ mat-progress-bar {
     
     .bar-wrap {
         font-size: 0.8rem;
+        width: 100%;
     }
  
 }

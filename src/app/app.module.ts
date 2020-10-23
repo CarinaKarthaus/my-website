@@ -24,6 +24,7 @@ import { ImprintComponent } from './imprint/imprint.component';
 import { DataProtectionComponent } from './data-protection/data-protection.component';
 import { faGithub, faXing, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -53,7 +54,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    FontAwesomeModule 
+    FontAwesomeModule,
+    MatSidenavModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

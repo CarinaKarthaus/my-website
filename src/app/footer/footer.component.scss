@@ -75,3 +75,9 @@ mat-icon {
         }
     }
 }
+
+@media (max-width: 850px) {
+    fa-icon {
+        font-size: 2rem;
+    }
+}

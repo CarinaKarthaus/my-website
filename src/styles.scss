@@ -68,6 +68,8 @@ h2 {
     // }
 }
 
+
+
 @media (max-width: 1000px) {
     .section-container {
         padding: 4rem;
@@ -82,7 +84,7 @@ h2 {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .section-container {
         padding: 3rem;
     }
@@ -97,10 +99,7 @@ h2 {
 }
 
 @media (max-width: 450px) {
-    // .section-container {
-    //     padding: 2rem;
-    // }
-  
+ 
     .header-line {
         margin-top: 0.8rem;
         height: 2px;
