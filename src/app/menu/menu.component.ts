@@ -1,4 +1,4 @@
-import { Component, ElementRef, Host, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 
 

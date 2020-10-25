@@ -14,6 +14,7 @@ export class AnimationTriggerService {
   public elementOffsetTop = elementOffsetTop;     // Offset of HTML-element to the document's top edge
   public animTriggerPosition = animTriggerPosition;   // Scroll position where animations get triggered 
   public triggerPos = this.animTriggerPosition;
+  public mobilePagePosition;
 
   constructor() { }
 
@@ -41,7 +42,12 @@ export class AnimationTriggerService {
    */
   @HostListener('window:scroll') 
   public animateOnScroll() {
-    this.currentPagePosition = window.scrollY;
+    this.currentPagePosition = window.scrollY;    
+
+    if (window.innerWidth < 850) {
+      // this.currentPagePosition = this.mobilePagePosition;
+    }
+
     this.calculateTriggerPositions();
 
     this.triggerAboutSection();
@@ -87,4 +93,5 @@ export class AnimationTriggerService {
       this.animationState.footer = 'in' 
     }
   }
+
 }

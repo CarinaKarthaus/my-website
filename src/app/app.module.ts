@@ -25,7 +25,8 @@ import { DataProtectionComponent } from './data-protection/data-protection.compo
 import { faGithub, faXing, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { ContentComponent } from './content/content.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
@@ -39,7 +40,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     ContactComponent,
     FooterComponent,
     ImprintComponent,
-    DataProtectionComponent
+    DataProtectionComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatButtonModule,
     MatCardModule,
     FontAwesomeModule,
-    MatSidenavModule 
+    MatSidenavModule,
+    ScrollingModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

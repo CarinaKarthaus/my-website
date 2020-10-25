@@ -1,3 +1,152 @@
+nav {
+    background-color: #1b242f;
+    display: flex;
+    justify-content: center;
+    border-bottom: 0.3rem solid #04c2c9;
+    width: 100vw;
+    z-index: 10;
+
+    .link-wrap {
+        display: flex;
+        height: 50px;
+        width: 50%;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+}
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: 125ms all ease-in-out;
+
+    &:hover {
+        color: #e31b6d;
+    }
+}
+
+.d-none {
+display: none;
+}
+
+
+.active {
+    color: #e31b6d !important;
+}
+
+.sidenav-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: unset;
+    display: none;
+  }
+   
+  .sidenav {
+    padding: 20px;
+    background-color:  #112233;
+    border-right: 1px solid #05C2C9;
+  }
+
+
+mat-drawer-container {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    color: unset;
+    scroll-behavior: smooth;
+}
+
+// Remove focus from sidenav-elements
+textarea:focus, input:focus{
+    outline: none !important;
+}
+
+*:focus {
+    outline: none;
+}
+
+// Responsive design for menu
+
+@media (max-width: 1200px) {
+    nav .link-wrap {
+        width: 60%;
+    }
+}
+@media (max-width: 1000px) {
+    nav .link-wrap {
+        width: 80%;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .standard-container {
+        display: none;
+    }
+
+    .regularNav {
+        display: none;
+    }
+    .sidenav-container {
+        display: flex;
+        transition: 225ms all ease-in-out;
+    }
+
+    nav {
+        position: fixed;
+        justify-content: flex-end;
+        align-items: center;
+        top: 0;
+        border-bottom: 0.2rem solid #04c2c9;
+    }
+
+    fa-icon {
+        padding: 0.5rem 2rem;
+        font-size: 2rem;
+        color: #f5f5f5;
+    }
+    .link-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        top: 0;
+        right: 0;
+        padding-top: 20vh;
+        font-size: 1rem;
+
+        a {
+            padding-right: 1rem;
+            margin-bottom: 2rem;
+        }
+        }
+}
+
+
+@media (max-width: 450px) {
+
+    fa-icon {
+        padding: 0.5rem 1rem;
+    }
+     
+}
+
+
+
+
+
+
+
+
+
+
+
+// Previous styles 
+
 .overflow-wrap {
     overflow-x: hidden;
 }

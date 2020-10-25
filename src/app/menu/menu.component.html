@@ -20,19 +20,3 @@
 </nav>
 
 
-<!-- Responsive nav-bar - only active on mobile screens (max. width <= 850px) -->
-<mat-drawer-container class="sidenav-container" autosize *ngIf="isMobile">
-    <nav >
-        <fa-icon [icon]="['fas', 'bars']" (click)="drawer.toggle()"></fa-icon>
-    </nav>
-    <mat-drawer #drawer class="sidenav" mode="push" >
-
-        <div class="link-wrap" >
-            <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
-            <a href="#about" [class.active]="navPositionIndicator.aboutPosition">About</a>
-            <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition">Portfolio</a>
-            <a href="#contact" [class.active]="navPositionIndicator.contactPosition">Contact</a>
-        </div>
-
-    </mat-drawer>
-</mat-drawer-container>

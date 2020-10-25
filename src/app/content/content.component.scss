@@ -1,0 +1,22 @@
+.overflow-wrap {
+    overflow-x: hidden;
+}
+
+.modal-wrap {
+    height: 100vh;
+    // pointer-events: none;
+    position: fixed;
+    width: 100vw;
+    z-index: 100;
+}
+
+
+app-home {
+    color: #fff;
+    padding: 0;
+}
+
+app-about {
+    height: 100%;
+    width: 100%;
+}

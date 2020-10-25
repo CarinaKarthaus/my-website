@@ -1,4 +1,39 @@
-<div class="overflow-wrap">
+<!-- On mobile (max. width <= 850px): website-content integrated into drawer  -->
+<mat-drawer-container class="sidenav-container" autosize >
+  
+    <mat-drawer #drawer class="sidenav" mode="over" >
+        <div class="link-wrap" >
+            <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
+            <a href="#about" [class.active]="navPositionIndicator.aboutPosition">About</a>
+            <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition">Portfolio</a>
+            <a href="#contact" [class.active]="navPositionIndicator.contactPosition">Contact</a>
+        </div>
+    </mat-drawer>
+
+    <!-- <mat-drawer-content cdkScrollable> -->
+        <div  #drawerContainer  id="drawerContainer">
+
+            <nav >
+                <fa-icon [icon]="['fas', 'bars']" (click)="drawer.toggle()"></fa-icon>
+            </nav>
+            <router-outlet  ></router-outlet>
+            
+        </div>
+    <!-- </mat-drawer-content> -->
+
+</mat-drawer-container>
+
+
+
+<!-- Regular devices (max. width > 850px) -->
+<div class="standard-container">
+    <app-content></app-content>
+</div>
+
+
+
+
+<!-- <div class="overflow-wrap">
     <app-home id="home"></app-home>
     <app-menu ></app-menu>
     
@@ -6,4 +41,4 @@
     <app-portfolio id="portfolio"></app-portfolio>
     <app-contact id="contact"></app-contact>
     <app-footer></app-footer>
-</div>
+</div> -->
