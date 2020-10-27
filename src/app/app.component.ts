@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   // Indicates section currently visible in viewport
   navPositionIndicator = {
-    homePosition: true,
+    homePosition: false,
     aboutPosition: false,
     portfolioPosition: false,
     contactPosition: false,

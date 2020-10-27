@@ -8,27 +8,27 @@
     </div>
     <div class="contact-dialog-wrap" [@slideIn]="animationState['contact_dialog']" #contactDialog>
         <span>Got feedback or want to work together?</span>
-        <div class="contact-dialog">
+        <form class="contact-dialog"  #contactDirective="ngForm" [formGroup]="contactForm" (ngSubmit)="submitForm(contactDirective)">
                 <mat-form-field appearance="fill">
                     <mat-label>Your name</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="contact.name" formControlName="name">
                 </mat-form-field>
                 <br>
                 <mat-form-field appearance="fill">
                     <mat-label>Your email</mat-label>
-                    <input matInput placeholder="name@example.com" [formControl]="email" required>
+                    <input matInput placeholder="name@example.com" [formControl]="email" required [(ngModel)]="contact.email" formControlName="email">
                     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field appearance="fill">
                     <mat-label>Your message</mat-label>
-                    <textarea matInput class="msg-area"></textarea>
+                    <textarea matInput class="msg-area" [(ngModel)]="contact.message" formControlName="message"></textarea>
                 </mat-form-field>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary" type="submit" (click)="submit()">Submit</button>
+                    <button mat-raised-button color="primary" type="submit"  [disabled]="clicked"  >Submit</button>
                 </mat-card-actions>
 
-        </div>
+        </form>
 
     </div>
 

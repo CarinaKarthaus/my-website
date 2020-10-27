@@ -1,7 +1,10 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlideInAnimation } from '../animations';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
+import { Contact } from '../../models/contact.class';
 
 @Component({
   selector: 'app-contact',
@@ -10,9 +13,42 @@ import {FormControl, Validators} from '@angular/forms';
   animations: [ SlideInAnimation ]
 })
 export class ContactComponent implements OnInit {
+  contact = new Contact();
+  submitted = false;
+  clicked: boolean;
 
-  submit(){
-    console.log('workin');
+  contactForm = new FormGroup({
+    name: new FormControl(),
+    email: new FormControl(),
+    message: new FormControl()
+ });
+
+ /**
+  * If form-input is valid, send email with contact-form-data and reset form
+  * @param formDirective 
+  */
+  submitForm(formDirective: FormGroupDirective) {
+    if (formDirective.valid) {
+      this.sendEmail();
+      formDirective.resetForm();
+      this.contactForm.reset();
+      this.submitted = true;
+      this.clicked = true;
+      setTimeout(() => {
+        this.clicked = false;
+      }, 60000)   // Disables submitting for 60s  
+    }
+  }
+
+  // send email to server
+  sendEmail(){
+    console.log(this.contact);
+   
+    // this.http.post('http://carina-karthaus.developeradademie.com/php/send_mail.php', {
+    // "email": this.contact.email,
+    // "name": this.contact.name,
+    // "message": this.contact.message
+    // })
   }
 
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -25,9 +61,10 @@ export class ContactComponent implements OnInit {
     return this.email.hasError('email') ? 'Please enter a valid email' : '';
   }
 
-  constructor(public triggerService: AnimationTriggerService) { }
+  constructor(public triggerService: AnimationTriggerService, private http: HttpClient, private dialogRef: MatDialogRef<ContactComponent>) { }
 
   ngOnInit(): void {
+
   }
   
   animationState = this.triggerService.animationState;
@@ -56,9 +93,5 @@ export class ContactComponent implements OnInit {
  
        // console.log('elementOffsetTop', this.elementOffsetTop);
      }
-
-  
-
- 
 
 }

@@ -27,6 +27,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ContentComponent } from './content/content.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -58,9 +61,17 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatCardModule,
     FontAwesomeModule,
     MatSidenavModule,
-    ScrollingModule 
+    ScrollingModule,
+    MatDialogModule,
+    FormsModule,
+    HttpClientModule 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

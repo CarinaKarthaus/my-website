@@ -95,6 +95,9 @@ export class MenuComponent implements OnInit {
       this.resetNavClasses();
       this.navPositionIndicator.contactPosition = true;
     }
+
+    console.log(this.currentPagePosition, this.elementOffsetTop);
+    
   }
 
   /**
