@@ -6,7 +6,7 @@ import { animationState, elementOffsetTop, animTriggerPosition } from '../../ass
   providedIn: 'root'
 })
 export class AnimationTriggerService {
-  currentPagePosition: number;
+  public currentPagePosition: number;
   triggerOffset: number;
   windowHeight: number;
 
@@ -14,10 +14,8 @@ export class AnimationTriggerService {
   public elementOffsetTop = elementOffsetTop;     // Offset of HTML-element to the document's top edge
   public animTriggerPosition = animTriggerPosition;   // Scroll position where animations get triggered 
   public triggerPos = this.animTriggerPosition;
-  public mobilePagePosition;
 
   constructor() { }
-
 
   calculateTriggerPositions() {
     let offsetTop = this.elementOffsetTop;
@@ -41,12 +39,7 @@ export class AnimationTriggerService {
    * Track scroll position and initiate animation by changing and element's animationState
    */
   @HostListener('window:scroll') 
-  public animateOnScroll() {
-    this.currentPagePosition = window.scrollY;    
-
-    if (window.innerWidth < 850) {
-      // this.currentPagePosition = this.mobilePagePosition;
-    }
+  public animateOnScroll() {  
 
     this.calculateTriggerPositions();
 

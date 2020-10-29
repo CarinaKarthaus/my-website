@@ -46,7 +46,7 @@ export class MenuComponent implements OnInit {
   adjustNav() {
     this.clientWidth = window.innerWidth;
     this.isMobile = this.clientWidth <= this.maxWidthMobile;
-    this.currentPagePosition = window.scrollY;
+    this.currentPagePosition = this.triggerService.currentPagePosition;
 
     if (!this.isMobile) {
       this.toggleFixedNav();
@@ -54,6 +54,7 @@ export class MenuComponent implements OnInit {
       this.fixedNav = false;
     }
     this.checkActiveSection();
+    console.log(this.isMobile)
   }
 
   

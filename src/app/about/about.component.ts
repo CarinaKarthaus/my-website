@@ -40,6 +40,8 @@ export class AboutComponent implements OnInit {
 
   @HostListener('window:scroll') 
   updateOffset() {
+    console.log('this.aboutHeader.nativeElement',  this.aboutHeader.nativeElement.getBoundingClientRect().top);
+    console.log('this.aboutHeader.nativeElement ID',  document.getElementById('aboutHeader').getBoundingClientRect().top);
       const rectHeader = this.aboutHeader.nativeElement.getBoundingClientRect();
       const rectLabels = this.aboutLabels.nativeElement.getBoundingClientRect();
       const rectSkills = this.aboutSkills.nativeElement.getBoundingClientRect();

@@ -11,21 +11,21 @@
         <form class="contact-dialog"  #contactDirective="ngForm" [formGroup]="contactForm" (ngSubmit)="submitForm(contactDirective)">
                 <mat-form-field appearance="fill">
                     <mat-label>Your name</mat-label>
-                    <input matInput [(ngModel)]="contact.name" formControlName="name">
+                    <input matInput formControlName="name" >
                 </mat-form-field>
                 <br>
                 <mat-form-field appearance="fill">
                     <mat-label>Your email</mat-label>
-                    <input matInput placeholder="name@example.com" [formControl]="email" required [(ngModel)]="contact.email" formControlName="email">
+                    <input matInput placeholder="name@example.com" [formControl]="email" formControlName="email">
                     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field appearance="fill">
                     <mat-label>Your message</mat-label>
-                    <textarea matInput class="msg-area" [(ngModel)]="contact.message" formControlName="message"></textarea>
+                    <textarea matInput class="msg-area" formControlName="message"></textarea>
                 </mat-form-field>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary" type="submit"  [disabled]="clicked"  >Submit</button>
+                    <button mat-raised-button color="primary" type="submit"  [disabled]="clicked">Submit</button>
                 </mat-card-actions>
 
         </form>

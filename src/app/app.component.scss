@@ -1,6 +1,6 @@
 nav {
     background-color: #1b242f;
-    display: flex;
+    display: none;
     justify-content: center;
     border-bottom: 0.3rem solid #04c2c9;
     width: 100vw;
@@ -27,11 +27,6 @@ a {
     }
 }
 
-.d-none {
-display: none;
-}
-
-
 .active {
     color: #e31b6d !important;
 }
@@ -41,13 +36,13 @@ display: none;
     width: 100vw;
     height: 100vh;
     background-color: unset;
-    display: none;
   }
    
   .sidenav {
     padding: 20px;
     background-color:  #112233;
     border-right: 1px solid #05C2C9;
+    display: none;
   }
 
 
@@ -68,35 +63,20 @@ textarea:focus, input:focus{
     outline: none;
 }
 
-// Responsive design for menu
-
-@media (max-width: 1200px) {
-    nav .link-wrap {
-        width: 60%;
-    }
-}
-@media (max-width: 1000px) {
-    nav .link-wrap {
-        width: 80%;
-        font-size: 1.4rem;
-    }
-}
+// Responsive design 
 
 @media (max-width: 850px) {
 
-    .standard-container {
-        display: none;
-    }
-
-    .regularNav {
-        display: none;
-    }
     .sidenav-container {
-        display: flex;
         transition: 225ms all ease-in-out;
     }
 
+    .sidenav {
+        display: flex;
+    }
+
     nav {
+        display: flex;
         position: fixed;
         justify-content: flex-end;
         align-items: center;

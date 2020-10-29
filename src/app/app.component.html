@@ -1,4 +1,4 @@
-<!-- On mobile (max. width <= 850px): website-content integrated into drawer  -->
+<!-- On mobile (max. width <= 850px): mat-drawer & nav visible  -->
 <mat-drawer-container class="sidenav-container" autosize >
   
     <mat-drawer #drawer class="sidenav" mode="over" >
@@ -11,34 +11,12 @@
     </mat-drawer>
 
     <!-- <mat-drawer-content cdkScrollable> -->
-        <div  #drawerContainer  id="drawerContainer">
-
+        <div  #drawerContainer  id="drawerContainer" CdkScrollable>
             <nav >
                 <fa-icon [icon]="['fas', 'bars']" (click)="drawer.toggle()"></fa-icon>
             </nav>
-            <router-outlet  ></router-outlet>
-            
+            <router-outlet></router-outlet>
         </div>
     <!-- </mat-drawer-content> -->
 
 </mat-drawer-container>
-
-
-
-<!-- Regular devices (max. width > 850px) -->
-<div class="standard-container">
-    <app-content></app-content>
-</div>
-
-
-
-
-<!-- <div class="overflow-wrap">
-    <app-home id="home"></app-home>
-    <app-menu ></app-menu>
-    
-    <app-about id="about" ></app-about>
-    <app-portfolio id="portfolio"></app-portfolio>
-    <app-contact id="contact"></app-contact>
-    <app-footer></app-footer>
-</div> -->

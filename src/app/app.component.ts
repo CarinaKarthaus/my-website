@@ -1,24 +1,19 @@
-import { CdkScrollable, ScrollingModule } from '@angular/cdk/scrolling';
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { AnimationTriggerService } from './services/animationtriggerservice';
 import { MatDrawerContainer } from '@angular/material/sidenav';
-
-
-
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-
-
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'my-website';
-
-
-  clientWidth: number;
-  fixedNav = false;
 
   // Indicates section currently visible in viewport
   navPositionIndicator = {
@@ -27,41 +22,36 @@ export class AppComponent implements OnInit, AfterViewInit {
     portfolioPosition: false,
     contactPosition: false,
   };
-  public mobilePagePosition;
-
-
-  constructor(public triggerService: AnimationTriggerService, private scrollingModule: ScrollingModule) {}
-
-  triggerPos = this.triggerService.animTriggerPosition;
-  elementOffsetTop = this.triggerService.elementOffsetTop;
-  
-
-  ngOnInit(): void {
-
-  }
-
-
-  
-  ngAfterViewInit() {
-    setInterval(this.getScrollingPosition, 100);
-
-
-  }
-  
 
   @ViewChild('drawerContainer') drawerContainer;
+  @ViewChild(MatDrawerContainer) MatDrawerContainer;
 
-  getScrollingPosition() {
-    // let drContainer = document.getElementById('drawerContainer');
 
-    let drawerContainer = this.drawerContainer.getBoundingClientRect();
-    this.mobilePagePosition = drawerContainer.top;
+  constructor(
+    public triggerService: AnimationTriggerService
+  ) {}
 
-    // this.triggerService.mobilePagePosition = this.mobilePagePosition;
-    
-    console.log(this.mobilePagePosition);           
+
+  ngOnInit(): void {
+  }
+  
+  ngAfterViewInit() {
+    // Fire event when scroll detected to get scrollY position
+    this.MatDrawerContainer.scrollable.elementScrolled().subscribe(() => {
+      this.getScrollPosition(this);
+  });
+
   }
 
+  /**
+   * Detect scroll position in drawerContainer
+   * @param self original instance of AppComponent
+   */
+  getScrollPosition(self: AppComponent) {
+    let currentYPosition = self.drawerContainer.nativeElement.getBoundingClientRect().top;
+    this.triggerService.currentPagePosition = currentYPosition * (-1); // Remove negative sign
+    // console.log('test', this.triggerService.currentPagePosition)
+  }
+
+  
 }
-
-
