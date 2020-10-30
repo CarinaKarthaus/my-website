@@ -54,6 +54,10 @@ export class AboutComponent implements OnInit {
       this.elementOffsetTop.about_header = this.headerOffset;
       this.elementOffsetTop.about_labels = this.labelsOffset;
       this.elementOffsetTop.about_skills = this.skillsOffset;
+
+
+      console.log(rectSkills);
+      
       
     }
 

@@ -43,38 +43,3 @@ display: none;
 .active {
     color: #e31b6d !important;
 }
-
-// .opacity-0 {
-//     opacity: 0;
-//     // z-index: -1 !important;
-// }
-
-.sidenav-container {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: unset;
-    display: none;
-  }
-   
-  .sidenav {
-    padding: 20px;
-    background-color:  #112233;
-    border-right: 1px solid #05C2C9;
-  }
-
-
-mat-drawer-container {
-    position: absolute;
-    top: 0;
-    height: 100vh;
-}
-
-// Remove focus from sidenav-elements
-textarea:focus, input:focus{
-    outline: none !important;
-}
-
-*:focus {
-    outline: none;
-}

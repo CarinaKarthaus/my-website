@@ -1,12 +1,13 @@
 import { HostListener, Injectable } from '@angular/core';
-import { animationState, elementOffsetTop, animTriggerPosition } from '../../assets/data/animationtriggers';
+import { BehaviorSubject } from 'rxjs';
+import { animationState, elementOffsetTop, animTriggerPosition, currentSection } from '../../assets/data/animationtriggers';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AnimationTriggerService {
-  public currentPagePosition: number;
+  public currentPagePosition = 0;
   triggerOffset: number;
   windowHeight: number;
 
@@ -14,8 +15,13 @@ export class AnimationTriggerService {
   public elementOffsetTop = elementOffsetTop;     // Offset of HTML-element to the document's top edge
   public animTriggerPosition = animTriggerPosition;   // Scroll position where animations get triggered 
   public triggerPos = this.animTriggerPosition;
+  public currentSection = currentSection;   //Indicates section currently visible
+  public observable = new BehaviorSubject(this.currentPagePosition);
+
 
   constructor() { }
+
+  
 
   calculateTriggerPositions() {
     let offsetTop = this.elementOffsetTop;
@@ -35,6 +41,7 @@ export class AnimationTriggerService {
     this.triggerPos.footer = offsetTop.footer - triggerOffset;
   }
 
+
   /**
    * Track scroll position and initiate animation by changing and element's animationState
    */
@@ -42,12 +49,11 @@ export class AnimationTriggerService {
   public animateOnScroll() {  
 
     this.calculateTriggerPositions();
-
     this.triggerAboutSection();
     this.triggerPortfolioSection();
     this.triggerContactSection();
-    
-    // console.log(this.currentPagePosition);
+    this.observable.next(this.currentPagePosition);  
+
     return this.animationState;  
   }
 
@@ -61,6 +67,8 @@ export class AnimationTriggerService {
     if (this.currentPagePosition > this.triggerPos.about_skills) { 
       this.animationState.about_skills = 'in' 
     }
+    console.log(this.triggerPos);
+    
   }
 
   triggerPortfolioSection() {
@@ -85,6 +93,7 @@ export class AnimationTriggerService {
     if (this.currentPagePosition > this.triggerPos.footer) { 
       this.animationState.footer = 'in' 
     }
-  }
+  } 
+
 
 }

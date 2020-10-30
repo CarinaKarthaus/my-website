@@ -1,6 +1,6 @@
 // Default states for animation states, offsets & triggers
 
-var animationState = {
+  let animationState = {
     'about_header': 'out',
     'about_labels': 'out',
     'about_skills': 'out',
@@ -12,7 +12,7 @@ var animationState = {
     'footer': 'out'
   };
 
-  var elementOffsetTop = {
+  let elementOffsetTop = {
     home: 1000,
     about_header: 1050,
     about_labels: 1100,
@@ -25,7 +25,7 @@ var animationState = {
     footer: 3500,
   };
 
-  var animTriggerPosition = {
+  let animTriggerPosition = {
     home: 1000,
     about_header: 1050,
     about_labels: 1100,
@@ -38,5 +38,12 @@ var animationState = {
     footer: 3000,
   }
 
-  export {animationState, elementOffsetTop, animTriggerPosition};
+  let currentSection = {
+    homeSection: true,
+    aboutSection: false,
+    portfolioSection: false,
+    contactSection: false,
+  };
+
+  export {animationState, elementOffsetTop, animTriggerPosition, currentSection};
 

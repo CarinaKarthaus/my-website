@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { AnimationTriggerService } from './services/animationtriggerservice';
 import { MatDrawerContainer } from '@angular/material/sidenav';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +15,18 @@ import { MatDrawerContainer } from '@angular/material/sidenav';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'my-website';
+  currentYPosition: number;
 
   // Indicates section currently visible in viewport
-  navPositionIndicator = {
-    homePosition: false,
-    aboutPosition: false,
-    portfolioPosition: false,
-    contactPosition: false,
-  };
 
   @ViewChild('drawerContainer') drawerContainer;
   @ViewChild(MatDrawerContainer) MatDrawerContainer;
 
 
-  constructor(
-    public triggerService: AnimationTriggerService
-  ) {}
+  constructor(public triggerService: AnimationTriggerService ) {  }
+
+  
+ currentSection = this.triggerService.currentSection;
 
 
   ngOnInit(): void {
@@ -39,6 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     // Fire event when scroll detected to get scrollY position
     this.MatDrawerContainer.scrollable.elementScrolled().subscribe(() => {
       this.getScrollPosition(this);
+      this.triggerService.animateOnScroll();
   });
 
   }
@@ -48,10 +46,15 @@ export class AppComponent implements OnInit, AfterViewInit {
    * @param self original instance of AppComponent
    */
   getScrollPosition(self: AppComponent) {
-    let currentYPosition = self.drawerContainer.nativeElement.getBoundingClientRect().top;
-    this.triggerService.currentPagePosition = currentYPosition * (-1); // Remove negative sign
+    this.currentYPosition = self.drawerContainer.nativeElement.getBoundingClientRect().top;
+    this.triggerService.currentPagePosition = Math.abs(this.currentYPosition); // Remove negative sign from position
     // console.log('test', this.triggerService.currentPagePosition)
+
   }
+
+
+
+ 
 
   
 }

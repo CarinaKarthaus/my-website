@@ -1,22 +1,36 @@
-nav {
-    background-color: #1b242f;
-    display: none;
-    justify-content: center;
-    border-bottom: 0.3rem solid #04c2c9;
-    width: 100vw;
-    z-index: 10;
-
-    .link-wrap {
-        display: flex;
-        height: 50px;
-        width: 50%;
-        justify-content: space-evenly;
-        align-items: center;
-        font-size: 1.5rem;
-        text-transform: uppercase;
-    }
-
+mat-drawer-container {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    color: unset;
+    scroll-behavior: smooth;
 }
+
+.sidenav-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: unset;
+  }
+   
+.sidenav {
+padding: 20px;
+background-color:  #112233;
+border-right: 1px solid #05C2C9;
+display: none;
+}
+
+
+.link-wrap {
+    display: flex;
+    height: 50px;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
 a {
     color: #fff;
     text-decoration: none;
@@ -31,28 +45,15 @@ a {
     color: #e31b6d !important;
 }
 
-.sidenav-container {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: unset;
-  }
-   
-  .sidenav {
-    padding: 20px;
-    background-color:  #112233;
-    border-right: 1px solid #05C2C9;
+nav {
+    background-color: #1b242f;
     display: none;
-  }
-
-
-mat-drawer-container {
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    color: unset;
-    scroll-behavior: smooth;
+    justify-content: center;
+    border-bottom: 0.3rem solid #04c2c9;
+    width: 100vw;
+    z-index: 10;
 }
+
 
 // Remove focus from sidenav-elements
 textarea:focus, input:focus{
@@ -114,39 +115,3 @@ textarea:focus, input:focus{
     }
      
 }
-
-
-
-
-
-
-
-
-
-
-
-// Previous styles 
-
-.overflow-wrap {
-    overflow-x: hidden;
-}
-
-.modal-wrap {
-    height: 100vh;
-    // pointer-events: none;
-    position: fixed;
-    width: 100vw;
-    z-index: 100;
-}
-
-
-app-home {
-    color: #fff;
-    padding: 0;
-}
-
-app-about {
-    height: 100%;
-    width: 100%;
-}
-

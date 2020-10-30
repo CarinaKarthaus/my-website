@@ -3,20 +3,18 @@
   
     <mat-drawer #drawer class="sidenav" mode="over" >
         <div class="link-wrap" >
-            <a href="#home" [class.active]="navPositionIndicator.homePosition">Home</a>
-            <a href="#about" [class.active]="navPositionIndicator.aboutPosition">About</a>
-            <a href="#portfolio" [class.active]="navPositionIndicator.portfolioPosition">Portfolio</a>
-            <a href="#contact" [class.active]="navPositionIndicator.contactPosition">Contact</a>
+            <a href="#home" [class.active]="currentSection.homeSection">Home</a>
+            <a href="#about" [class.active]="currentSection.aboutSection">About</a>
+            <a href="#portfolio" [class.active]="currentSection.portfolioSection">Portfolio</a>
+            <a href="#contact" [class.active]="currentSection.contactSection">Contact</a>
         </div>
     </mat-drawer>
 
-    <!-- <mat-drawer-content cdkScrollable> -->
-        <div  #drawerContainer  id="drawerContainer" CdkScrollable>
-            <nav >
-                <fa-icon [icon]="['fas', 'bars']" (click)="drawer.toggle()"></fa-icon>
-            </nav>
-            <router-outlet></router-outlet>
-        </div>
-    <!-- </mat-drawer-content> -->
+    <div  #drawerContainer  id="drawerContainer" CdkScrollable>
+        <nav >
+            <fa-icon [icon]="['fas', 'bars']" (click)="drawer.toggle()"></fa-icon>
+        </nav>
+        <router-outlet></router-outlet>
+    </div>
 
 </mat-drawer-container>
