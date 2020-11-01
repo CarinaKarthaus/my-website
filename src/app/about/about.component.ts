@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlideInAnimation } from '../animations';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 import { labels, skills } from '../../assets/data/skills';
@@ -10,7 +10,7 @@ import { labels, skills } from '../../assets/data/skills';
   styleUrls: ['./about.component.scss'],
   animations: [ SlideInAnimation ]
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, AfterViewInit {
   animationState;
   labels = labels;
   skills = skills;
@@ -23,9 +23,16 @@ export class AboutComponent implements OnInit {
 
 
   ngOnInit(): void {
-    setInterval(() => {
+    // setInterval(() => {
       this.triggerService.animateOnScroll();
-    },50);
+    // },50);
+  }
+
+  ngAfterViewInit() {
+    this.triggerService.observable.subscribe(() => {
+      this.updateOffset();
+      
+    })
   }
 
   // Access Elements to detect offset to document top
@@ -38,25 +45,21 @@ export class AboutComponent implements OnInit {
   skillsOffset = 0;
   elementOffsetTop = this.triggerService.elementOffsetTop;
 
-  @HostListener('window:scroll') 
+  // @HostListener('window:scroll') 
   updateOffset() {
-    console.log('this.aboutHeader.nativeElement',  this.aboutHeader.nativeElement.getBoundingClientRect().top);
-    console.log('this.aboutHeader.nativeElement ID',  document.getElementById('aboutHeader').getBoundingClientRect().top);
+    let pageOffsetY = this.triggerService.currentPagePosition;
       const rectHeader = this.aboutHeader.nativeElement.getBoundingClientRect();
       const rectLabels = this.aboutLabels.nativeElement.getBoundingClientRect();
       const rectSkills = this.aboutSkills.nativeElement.getBoundingClientRect();
 
       // Add element's offset to viewport-top to the offset already scrolled (pageYOffset)
-      this.headerOffset = rectHeader.top + window.pageYOffset; // - document.documentElement.clientTop;
-      this.labelsOffset = rectLabels.top + window.pageYOffset; // - document.documentElement.clientTop;
-      this.skillsOffset = rectSkills.top + window.pageYOffset; // - document.documentElement.clientTop;
+      this.headerOffset = rectHeader.top + pageOffsetY;
+      this.labelsOffset = rectLabels.top + pageOffsetY;
+      this.skillsOffset = rectSkills.top + pageOffsetY;
       // Update offset-object from triggerService
       this.elementOffsetTop.about_header = this.headerOffset;
       this.elementOffsetTop.about_labels = this.labelsOffset;
-      this.elementOffsetTop.about_skills = this.skillsOffset;
-
-
-      console.log(rectSkills);
+      this.elementOffsetTop.about_skills = this.skillsOffset;    
       
       
     }

@@ -48,6 +48,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   getScrollPosition(self: AppComponent) {
     this.currentYPosition = self.drawerContainer.nativeElement.getBoundingClientRect().top;
     this.triggerService.currentPagePosition = Math.abs(this.currentYPosition); // Remove negative sign from position
+    let drawerHeight = self.drawerContainer.nativeElement.getBoundingClientRect().height;
+    // console.log('drawerHeight', drawerHeight);
+    // console.log('currentY', this.currentYPosition);
+    
+    
     // console.log('test', this.triggerService.currentPagePosition)
 
   }

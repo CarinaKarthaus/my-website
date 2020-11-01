@@ -30,7 +30,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AnimationTriggerService } from './services/animationtriggerservice';
 
 
 

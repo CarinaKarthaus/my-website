@@ -46,7 +46,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   activateMobileNav() {
     this.adjustNav();
   }
-  @HostListener('window:scroll')
+//   @HostListener('window:scroll')
   public adjustNav() {
     this.clientWidth = window.innerWidth;
     this.isMobile = this.clientWidth <= this.maxWidthMobile;
@@ -57,7 +57,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
       this.fixedNav = false;
     }
     this.checkActiveSection();
-    console.log(this.isMobile)
+//     console.log(this.isMobile)
   }
   
   // Activate fixed nav on viewport-top on scroll 
@@ -75,6 +75,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
    * Checks section currently visible and assigns/removes active-link-style accordingly
    */
   checkActiveSection() {
+    this.elementOffsetTop = this.triggerService.elementOffsetTop;
     let navSwitchOffset = window.innerHeight / 2;
     if (this.currentPagePosition <= this.elementOffsetTop.home - navSwitchOffset) {
       this.resetNavClasses();
@@ -92,7 +93,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
       this.resetNavClasses();
       this.currentSection.contactSection = true;
     }
-    console.log(this.currentPagePosition, this.elementOffsetTop);
+    console.log('elementOffsetTop', this.elementOffsetTop);
     
   }
   /**

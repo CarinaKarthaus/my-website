@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlideInAnimation } from '../animations';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 import { projects } from '../../assets/data/projects';
@@ -11,18 +11,25 @@ import { projects } from '../../assets/data/projects';
   animations: [ SlideInAnimation ]
 })
 
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent implements OnInit, AfterViewChecked {
   animationState = this.triggerService.animationState;
   currentFilter = '';
   projects = projects;
   visibleProjects = this.projects;
-  columns = 3;
+  columns: number;
 
   constructor(public triggerService: AnimationTriggerService ) { }
 
   ngOnInit(): void {
-    
+    this.arrangeGrid();
+   }
+
+  ngAfterViewChecked() {
+      this.triggerService.observable.subscribe(() => {
+        this.updateOffset();
+    })
   }
+
 
   /**
    * Adapts no. of columns per grid-row based on screen-width
@@ -30,7 +37,7 @@ export class PortfolioComponent implements OnInit {
   @HostListener('window:resize') 
   arrangeGrid() {
     let screenWidth = window.innerWidth;
-
+    
     if (screenWidth >= 1200) { this.columns = 3}
     if (screenWidth < 1200) { this.columns = 2 }
     if (screenWidth < 800 ) {this.columns = 1}   
@@ -49,21 +56,21 @@ export class PortfolioComponent implements OnInit {
   portfolioOffset = 0;
   elementOffsetTop = this.triggerService.elementOffsetTop;
 
-  @HostListener('window:scroll') 
   updateOffset() {
     this.arrangeGrid();
-      const rectHeader = this.portfolioHeader.nativeElement.getBoundingClientRect();
-      const rectFilter = this.portfolioFilter.nativeElement.getBoundingClientRect();
-      const rectPortfolio = this.portfolioGrid.nativeElement.getBoundingClientRect();
+    let pageOffsetY = this.triggerService.currentPagePosition;
+    const rectHeader = this.portfolioHeader.nativeElement.getBoundingClientRect();
+    const rectFilter = this.portfolioFilter.nativeElement.getBoundingClientRect();
+    const rectPortfolio = this.portfolioGrid.nativeElement.getBoundingClientRect();
 
-      // Add element's offset to viewport-top to the offset already scrolled (pageYOffset)
-      this.headerOffset = rectHeader.top + window.pageYOffset; // - document.documentElement.clientTop;
-      this.filterOffset = rectFilter.top + window.pageYOffset; // - document.documentElement.clientTop;
-      this.portfolioOffset = rectPortfolio.top + window.pageYOffset; // - document.documentElement.clientTop;
-      // Update offset-object from triggerService
-      this.elementOffsetTop.portfolio_header = this.headerOffset;
-      this.elementOffsetTop.portfolio_filter = this.filterOffset;
-      this.elementOffsetTop.portfolio = this.portfolioOffset;
+    // Add element's offset to viewport-top to the offset already scrolled (pageYOffset)
+    this.headerOffset = rectHeader.top + pageOffsetY;
+    this.filterOffset = rectFilter.top + pageOffsetY;
+    this.portfolioOffset = rectPortfolio.top + pageOffsetY;
+    // Update offset-object from triggerService
+    this.elementOffsetTop.portfolio_header = this.headerOffset;
+    this.elementOffsetTop.portfolio_filter = this.filterOffset;
+    this.elementOffsetTop.portfolio = this.portfolioOffset;     
       
     }
   

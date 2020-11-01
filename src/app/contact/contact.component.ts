@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
@@ -23,7 +24,7 @@ import { Contact } from '../../models/contact.class';
   styleUrls: ['./contact.component.scss'],
   animations: [SlideInAnimation],
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, AfterViewInit {
   contact = new Contact();
   submitted = false
   clicked: boolean;
@@ -35,7 +36,7 @@ export class ContactComponent implements OnInit {
   });
 
   /**
-   * If form-input is valid, send email with contact-form-data and reset form
+   * Send email with contact-form-data and reset form, if form is filled correctly
    * @param formDirective
    */
   submitForm(formDirective: FormGroupDirective) {
@@ -90,6 +91,14 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {}
 
+
+  ngAfterViewInit() {
+    this.triggerService.observable.subscribe(() => {
+      this.updateOffset();
+      
+    })
+  }
+
   animationState = this.triggerService.animationState;
 
   // Access Elements to detect offset to document top
@@ -100,19 +109,19 @@ export class ContactComponent implements OnInit {
   dialogOffset = 0;
   elementOffsetTop = this.triggerService.elementOffsetTop;
 
-  @HostListener('window:scroll')
+  // @HostListener('window:scroll')
   updateOffset() {
+    let pageOffsetY = this.triggerService.currentPagePosition;
     const rectHeader = this.contactHeader.nativeElement.getBoundingClientRect();
     const rectDialog = this.contactDialog.nativeElement.getBoundingClientRect();
 
     // Add element's offset to viewport-top to the offset already scrolled (pageYOffset)
-    this.headerOffset = rectHeader.top + window.pageYOffset; // - document.documentElement.clientTop;
-    this.dialogOffset = rectDialog.top + window.pageYOffset; // - document.documentElement.clientTop;
+    this.headerOffset = rectHeader.top + pageOffsetY;
+    this.dialogOffset = rectDialog.top + pageOffsetY;
 
     // Update offset-object from triggerService
     this.elementOffsetTop.contact_header = this.headerOffset;
     this.elementOffsetTop.contact_dialog = this.dialogOffset;
-
-    // console.log('elementOffsetTop', this.elementOffsetTop);
+    
   }
 }

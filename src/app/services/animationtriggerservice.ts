@@ -26,8 +26,8 @@ export class AnimationTriggerService {
   calculateTriggerPositions() {
     let offsetTop = this.elementOffsetTop;
     let triggerOffset = window.innerHeight / 1.6; // offset to trigger before element reaches top of screen 
-
-    this.triggerPos.home = window.innerHeight;
+    
+    this.triggerPos.home = offsetTop.home ;
     this.triggerPos.about_header = offsetTop.about_header - triggerOffset;
     this.triggerPos.about_labels = offsetTop.about_labels - triggerOffset;
     this.triggerPos.about_skills = offsetTop.about_skills - triggerOffset;
@@ -39,13 +39,16 @@ export class AnimationTriggerService {
     this.triggerPos.contact_header = offsetTop.contact_header - triggerOffset;
     this.triggerPos.contact_dialog = offsetTop.contact_dialog - triggerOffset;
     this.triggerPos.footer = offsetTop.footer - triggerOffset;
+
+    console.log('triggerPos', this.triggerPos)
+      
   }
 
 
   /**
    * Track scroll position and initiate animation by changing and element's animationState
    */
-  @HostListener('window:scroll') 
+  // @HostListener('window:scroll') 
   public animateOnScroll() {  
 
     this.calculateTriggerPositions();
@@ -67,7 +70,9 @@ export class AnimationTriggerService {
     if (this.currentPagePosition > this.triggerPos.about_skills) { 
       this.animationState.about_skills = 'in' 
     }
-    console.log(this.triggerPos);
+    // console.log(this.triggerPos);
+    // console.log(this.elementOffsetTop);
+    
     
   }
 
