@@ -13,11 +13,6 @@ span {
     color: #606163;
 }
 
-mat-icon {
-    font-size: 2rem;
-    height: unset;
-    width: unset;
-}
 
 .page-up-btn {
     width: 3rem;
@@ -38,14 +33,29 @@ mat-icon {
         background-color: #ec4a8e;
     }
 }
+.link-wrap {
+    display: flex;
+    justify-content: center;
 
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        margin: 1rem 0.5rem;
+        transition: 125ms all ease-in-out;
+        text-align: center;
+
+        &:hover {
+            color: #e31b6d;
+        }
+    }
+}
 .social-media-wrap {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 20rem;
     margin-top: 2rem;
-
 
     fa-icon {
         font-size: 2.5rem;
@@ -59,25 +69,23 @@ mat-icon {
     }   
 }
 
-.link-wrap {
-    display: flex;
-    justify-content: center;
-
-
-    a {
-        color: #fff;
-        text-decoration: none;
-        margin: 1rem 0.5rem;
-        transition: 125ms all ease-in-out;
-
-        &:hover {
-            color: #e31b6d;
-        }
-    }
+mat-icon {
+    font-size: 2rem;
+    height: unset;
+    width: unset;
 }
+
+
 
 @media (max-width: 850px) {
     fa-icon {
         font-size: 2rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .social-media-wrap {
+        width: 100%;
+  
     }
 }

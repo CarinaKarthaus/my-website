@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  HostListener,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -14,9 +13,10 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Contact } from '../../models/contact.class';
+import { DialogContactComponent } from '../dialog-contact/dialog-contact.component';
 
 @Component({
   selector: 'app-contact',
@@ -35,14 +35,16 @@ export class ContactComponent implements OnInit, AfterViewInit {
     message: new FormControl('', Validators.required),
   });
 
+  messageSent = false;
+
   /**
    * Send email with contact-form-data and reset form, if form is filled correctly
    * @param formDirective
    */
   submitForm(formDirective: FormGroupDirective) {
     if (formDirective.valid) {
-      this.sendEmail();
-      this.contactForm.reset();
+      this.sendEmail(formDirective);
+
       this.submitted = true;
       this.clicked = true;
       setTimeout(() => {
@@ -52,24 +54,25 @@ export class ContactComponent implements OnInit, AfterViewInit {
   }
 
   // send email to server
-  sendEmail() {
+  sendEmail(formDirective) {
     console.log();
 
-/*     this.http
-      .post('http://carina-karthaus.developeradademie.com/php/send_mail.php', {
-        email: this.contactForm.controls['email'].value,
-        name: this.contactForm.controls['name'].value,
-        message: this.contactForm.controls['message'].value,
-      })
-      .subscribe(
-        (success: any) => {
-          // Wenn fertig:formDirective.resetForm();
-          // Erfolgsnachricht anzeigen (Dialog)
-        },
-        (error: any) => {
-          // Fehlermeldung anzeigen
-        }
-      ); */
+   this.http
+    .post('https://carina-karthaus.developeradademie.com/php/send_mail.php', {
+      email: this.contactForm.controls['email'].value,
+      name: this.contactForm.controls['name'].value,
+      message: this.contactForm.controls['message'].value,
+    })
+    .subscribe(
+      (success: any) => {
+        this.openDialog(true);
+        this.contactForm.reset();
+        formDirective.resetForm();
+      },
+      (error: any) => {
+        this.openDialog(false);
+      }
+    ); 
   }
 
   email = new FormControl('', [Validators.required, Validators.email]); 
@@ -86,10 +89,12 @@ export class ContactComponent implements OnInit, AfterViewInit {
   constructor(
     public triggerService: AnimationTriggerService,
     private http: HttpClient,
-    private dialogRef: MatDialogRef<ContactComponent>
+    public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.openDialog(false);
+  }
 
 
   ngAfterViewInit() {
@@ -109,7 +114,6 @@ export class ContactComponent implements OnInit, AfterViewInit {
   dialogOffset = 0;
   elementOffsetTop = this.triggerService.elementOffsetTop;
 
-  // @HostListener('window:scroll')
   updateOffset() {
     let pageOffsetY = this.triggerService.currentPagePosition;
     const rectHeader = this.contactHeader.nativeElement.getBoundingClientRect();
@@ -123,5 +127,21 @@ export class ContactComponent implements OnInit, AfterViewInit {
     this.elementOffsetTop.contact_header = this.headerOffset;
     this.elementOffsetTop.contact_dialog = this.dialogOffset;
     
+  }
+
+
+
+  /**
+   * Open dialog to show if message has been transmitted to server
+   * @param messageSent server-response, if message transmission was successful
+   */
+  openDialog(messageSent) {
+    this.messageSent = messageSent;
+    this.dialog.open(DialogContactComponent, {
+      data: {
+        messageSent: messageSent
+      }
+    }) ;
+
   }
 }

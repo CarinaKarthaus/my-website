@@ -21,13 +21,14 @@ export class PortfolioComponent implements OnInit, AfterViewChecked {
   constructor(public triggerService: AnimationTriggerService ) { }
 
   ngOnInit(): void {
-    this.arrangeGrid();
+      this.arrangeGrid();
    }
 
   ngAfterViewChecked() {
       this.triggerService.observable.subscribe(() => {
         this.updateOffset();
     })
+    
   }
 
 

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 
 
@@ -24,10 +25,12 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
   isMobile: boolean;
   maxWidthMobile = 850;
+  public navLinkActivation = false;
 
 
 
   ngOnInit(): void {
+
   }
 
   ngAfterViewInit(): void {
@@ -37,6 +40,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
       this.activateMobileNav();
       
     })
+    this.checkForStartPage();
   }
 
  /**
@@ -56,8 +60,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
     } else {
       this.fixedNav = false;
     }
-    this.checkActiveSection();
-//     console.log(this.isMobile)
+    if (this.navLinkActivation) {
+          this.checkActiveSection();
+    }
   }
   
   // Activate fixed nav on viewport-top on scroll 
@@ -77,6 +82,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   checkActiveSection() {
     this.elementOffsetTop = this.triggerService.elementOffsetTop;
     let navSwitchOffset = window.innerHeight / 2;
+
     if (this.currentPagePosition <= this.elementOffsetTop.home - navSwitchOffset) {
       this.resetNavClasses();
       this.currentSection.homeSection = true;
@@ -93,18 +99,28 @@ export class MenuComponent implements OnInit, AfterViewInit {
       this.resetNavClasses();
       this.currentSection.contactSection = true;
     }
-    console.log('elementOffsetTop', this.elementOffsetTop);
     
   }
   /**
    * Remove active-class from all nav-links by setting all indicators to false
    */
-  resetNavClasses() {
+  public resetNavClasses() {
     for (let i in this.currentSection) {
       if (Object.hasOwnProperty.call(this.currentSection, i)) {
         this.currentSection[i] = false;
       }
     }
   }
+
+
+
+ public checkForStartPage() {
+  let url = window.location.href;  
+  this.navLinkActivation = !url.endsWith('data-protection') && !url.endsWith('imprint') ;
+  this.resetNavClasses();
+}
+
+
+
 }
 

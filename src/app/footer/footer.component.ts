@@ -1,4 +1,3 @@
-import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -9,7 +8,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class FooterComponent implements OnInit {
   @ViewChild('home') private parentRef: ElementRef<HTMLElement>;
 
- constructor(private viewportScroller: ViewportScroller) {
+ constructor() {
     
   }
 
@@ -18,7 +17,7 @@ export class FooterComponent implements OnInit {
   
 
   scrollTo(anchorId: string): void {
-    this.viewportScroller.scrollToAnchor(anchorId);
+    document.getElementById(anchorId).scrollIntoView({ behavior: "smooth"});
   }
 
 }

@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: ContentComponent},
   { path: 'imprint', component: ImprintComponent},
   { path: 'data-protection', component: DataProtectionComponent},
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

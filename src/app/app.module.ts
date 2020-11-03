@@ -23,13 +23,14 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { ImprintComponent } from './imprint/imprint.component';
 import { DataProtectionComponent } from './data-protection/data-protection.component';
 import { faGithub, faXing, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCheckCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ContentComponent } from './content/content.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogContactComponent } from './dialog-contact/dialog-contact.component';
 
 
 
@@ -44,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     ImprintComponent,
     DataProtectionComponent,
-    ContentComponent
+    ContentComponent,
+    DialogContactComponent
   ],
   imports: [
     BrowserModule,
@@ -70,14 +72,17 @@ import { HttpClientModule } from '@angular/common/http';
     {
       provide: MatDialogRef,
       useValue: {}
-    }
+    },
+    { provide: MenuComponent,
+    useValue: {}
+  }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor (library: FaIconLibrary) {
     // Add icons to library to make them accessible
-    library.addIcons(faGithub, faLinkedinIn, faXing, faBars);
+    library.addIcons(faGithub, faLinkedinIn, faXing, faBars, faCheckCircle, faExclamationTriangle);
   }
 
  }

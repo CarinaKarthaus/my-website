@@ -7,6 +7,8 @@ import {
 import { AnimationTriggerService } from './services/animationtriggerservice';
 import { MatDrawerContainer } from '@angular/material/sidenav';
 import { BehaviorSubject } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
   selector: 'app-root',
@@ -23,21 +25,39 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MatDrawerContainer) MatDrawerContainer;
 
 
-  constructor(public triggerService: AnimationTriggerService ) {  }
+  constructor(public triggerService: AnimationTriggerService, private router: Router, private menu: MenuComponent) {  }
 
   
  currentSection = this.triggerService.currentSection;
 
 
   ngOnInit(): void {
+    this.checkForStartPage();
+    /**
+     * Scroll to top position when routing to another page
+     */
+
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        document.getElementById('drawerContainer').scrollIntoView();
+      }
+    });
+ 
+
+ 
   }
   
   ngAfterViewInit() {
     // Fire event when scroll detected to get scrollY position
-    this.MatDrawerContainer.scrollable.elementScrolled().subscribe(() => {
-      this.getScrollPosition(this);
-      this.triggerService.animateOnScroll();
-  });
+    
+      this.MatDrawerContainer.scrollable.elementScrolled().subscribe(() => {
+        if (this.triggerService.navLinkActivation) {
+       this.getScrollPosition(this);
+       this.triggerService.animateOnScroll();
+      }
+   });
+
+ 
 
   }
 
@@ -48,18 +68,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   getScrollPosition(self: AppComponent) {
     this.currentYPosition = self.drawerContainer.nativeElement.getBoundingClientRect().top;
     this.triggerService.currentPagePosition = Math.abs(this.currentYPosition); // Remove negative sign from position
-    let drawerHeight = self.drawerContainer.nativeElement.getBoundingClientRect().height;
-    // console.log('drawerHeight', drawerHeight);
-    // console.log('currentY', this.currentYPosition);
-    
-    
-    // console.log('test', this.triggerService.currentPagePosition)
 
   }
 
+  checkForStartPage() {
+    let url = window.location.href;  
+    this.triggerService.navLinkActivation = !url.endsWith('data-protection') && !url.endsWith('imprint') ;
+    // this.menu.resetNavClasses();
+  }
 
-
- 
 
   
 }

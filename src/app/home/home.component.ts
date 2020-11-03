@@ -6,8 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { CanvasSpace, Pt, Group, Line, Create, Bound, Const } from 'pts';
-import { ViewportScroller } from '@angular/common';
+import { CanvasSpace, Group, Line, Create } from 'pts';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 
 @Component({
@@ -17,7 +16,7 @@ import { AnimationTriggerService } from '../services/animationtriggerservice';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  constructor(private viewportScroller: ViewportScroller, public triggerService: AnimationTriggerService ) {}
+  constructor(public triggerService: AnimationTriggerService ) {}
 
   ngOnInit(): void {
     
@@ -101,7 +100,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   // Scrolling on btn-click
 
-  public scrollTo(anchorId: string): void {
-    this.viewportScroller.scrollToAnchor(anchorId);
+  scrollTo(anchorId: string): void {
+    document.getElementById(anchorId).scrollIntoView({ behavior: "smooth"});
   }
 }

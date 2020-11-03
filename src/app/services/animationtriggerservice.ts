@@ -17,6 +17,7 @@ export class AnimationTriggerService {
   public triggerPos = this.animTriggerPosition;
   public currentSection = currentSection;   //Indicates section currently visible
   public observable = new BehaviorSubject(this.currentPagePosition);
+  public navLinkActivation = false;
 
 
   constructor() { }
@@ -40,7 +41,7 @@ export class AnimationTriggerService {
     this.triggerPos.contact_dialog = offsetTop.contact_dialog - triggerOffset;
     this.triggerPos.footer = offsetTop.footer - triggerOffset;
 
-    console.log('triggerPos', this.triggerPos)
+    // console.log('triggerPos', this.triggerPos)
       
   }
 

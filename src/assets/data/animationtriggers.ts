@@ -39,7 +39,7 @@
   }
 
   let currentSection = {
-    homeSection: true,
+    homeSection: false,
     aboutSection: false,
     portfolioSection: false,
     contactSection: false,

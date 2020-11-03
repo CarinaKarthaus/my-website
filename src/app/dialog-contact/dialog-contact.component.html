@@ -1,0 +1,7 @@
+<div class="dialog-wrap">
+    <fa-icon [icon]="['fas', icon]"></fa-icon>
+    <div class="dialog-text">
+        <h2> {{ transmitConfirmation }}</h2>
+        <p [class.d-none]="data.messageSent"> {{ failureMsg }}</p>
+    </div>
+</div>
