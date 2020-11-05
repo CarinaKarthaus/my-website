@@ -26,7 +26,7 @@ export class PortfolioComponent implements OnInit, AfterViewChecked {
    }
 
   ngAfterViewChecked() {
-      this.triggerService.observable.subscribe(() => {
+      this.triggerService.pagePosition$.subscribe(() => {
         this.updateOffset();
     })
     

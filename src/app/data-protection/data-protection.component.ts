@@ -12,6 +12,7 @@ export class DataProtectionComponent implements OnInit {
   ngOnInit(): void {
     // Scroll to top position on init
     document.getElementById('drawerContainer').scrollIntoView();
+
   }
 
 }

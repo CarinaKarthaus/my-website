@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AnimationTriggerService } from '../services/animationtriggerservice';
 
 
@@ -14,7 +14,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
   fixedNav = false;
 
 
-  constructor(public triggerService: AnimationTriggerService) {
+
+  constructor(public triggerService: AnimationTriggerService, public router: Router) {
 
   }
 
@@ -30,12 +31,15 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+    this.router.events.subscribe((evt) => {
+      this.checkForStartPage();
+    });
 
   }
 
   ngAfterViewInit(): void {
     // subscribe to changes of currentPagePosition in triggerService
-    this.triggerService.observable.subscribe((pagePosition) => {
+    this.triggerService.pagePosition$.subscribe((pagePosition) => {
       this.currentPagePosition = pagePosition;
       this.activateMobileNav();
       
@@ -50,7 +54,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   activateMobileNav() {
     this.adjustNav();
   }
-//   @HostListener('window:scroll')
+
   public adjustNav() {
     this.clientWidth = window.innerWidth;
     this.isMobile = this.clientWidth <= this.maxWidthMobile;
@@ -83,28 +87,43 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.elementOffsetTop = this.triggerService.elementOffsetTop;
     let navSwitchOffset = window.innerHeight / 2;
 
-    if (this.currentPagePosition <= this.elementOffsetTop.home - navSwitchOffset) {
-      this.resetNavClasses();
-      this.currentSection.homeSection = true;
-    }
-    if (this.currentPagePosition > this.elementOffsetTop.about_header - navSwitchOffset) {
-      this.resetNavClasses();
-      this.currentSection.aboutSection = true;
-    }
-    if (this.currentPagePosition > this.elementOffsetTop.portfolio_header - navSwitchOffset) {
-      this.resetNavClasses();
-      this.currentSection.portfolioSection = true;
-    }
-    if (this.currentPagePosition > this.elementOffsetTop.contact_header - navSwitchOffset) {
-      this.resetNavClasses();
-      this.currentSection.contactSection = true;
-    }
-    
+      if (this.currentPagePosition <= this.elementOffsetTop.home - navSwitchOffset) {
+          this.resetNavClasses();
+          this.currentSection.homeSection = true;
+      }
+      if (this.currentPagePosition > this.elementOffsetTop.about_header - navSwitchOffset) {
+          this.resetNavClasses();
+          this.currentSection.aboutSection = true;
+      }
+      if (this.currentPagePosition > this.elementOffsetTop.portfolio_header - navSwitchOffset) {
+          this.resetNavClasses();
+          this.currentSection.portfolioSection = true;
+      }
+      if (this.currentPagePosition > this.elementOffsetTop.contact_header - navSwitchOffset) {
+          this.resetNavClasses();
+          this.currentSection.contactSection = true;
+      }
+
+    this.updateSectionObservables();
+
   }
+
+  /**
+   * Update the section-Observables 
+   */
+  updateSectionObservables() {
+    this.triggerService.homeSection$.next(this.currentSection.homeSection);
+    this.triggerService.aboutSection$.next(this.currentSection.aboutSection);
+    this.triggerService.portfolioSection$.next(this.currentSection.portfolioSection);
+    this.triggerService.contactSection$.next(this.currentSection.contactSection);
+    
+  }
+
+
   /**
    * Remove active-class from all nav-links by setting all indicators to false
    */
-  public resetNavClasses() {
+  resetNavClasses() {
     for (let i in this.currentSection) {
       if (Object.hasOwnProperty.call(this.currentSection, i)) {
         this.currentSection[i] = false;
@@ -118,6 +137,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   let url = window.location.href;  
   this.navLinkActivation = !url.endsWith('data-protection') && !url.endsWith('imprint') ;
   this.resetNavClasses();
+  this.updateSectionObservables();
 }
 
 

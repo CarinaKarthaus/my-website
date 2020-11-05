@@ -29,7 +29,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.triggerService.observable.subscribe(() => {
+    this.triggerService.pagePosition$.subscribe(() => {
       this.updateOffset();
       
     })

@@ -16,8 +16,15 @@ export class AnimationTriggerService {
   public animTriggerPosition = animTriggerPosition;   // Scroll position where animations get triggered 
   public triggerPos = this.animTriggerPosition;
   public currentSection = currentSection;   //Indicates section currently visible
-  public observable = new BehaviorSubject(this.currentPagePosition);
+  public pagePosition$ = new BehaviorSubject(this.currentPagePosition);
   public navLinkActivation = false;
+
+
+  // Observables for 
+  public homeSection$ = new BehaviorSubject(this.currentSection.homeSection);
+  public aboutSection$ = new BehaviorSubject(this.currentSection.aboutSection);
+  public portfolioSection$ = new BehaviorSubject(this.currentSection.portfolioSection);
+  public contactSection$ = new BehaviorSubject(this.currentSection.contactSection);
 
 
   constructor() { }
@@ -56,7 +63,7 @@ export class AnimationTriggerService {
     this.triggerAboutSection();
     this.triggerPortfolioSection();
     this.triggerContactSection();
-    this.observable.next(this.currentPagePosition);  
+    this.pagePosition$.next(this.currentPagePosition);  
 
     return this.animationState;  
   }
@@ -70,10 +77,7 @@ export class AnimationTriggerService {
     }
     if (this.currentPagePosition > this.triggerPos.about_skills) { 
       this.animationState.about_skills = 'in' 
-    }
-    // console.log(this.triggerPos);
-    // console.log(this.elementOffsetTop);
-    
+    }  
     
   }
 

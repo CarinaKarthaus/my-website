@@ -1,10 +1,10 @@
 <!-- Regular nav-bar for regular screen size-->
 <nav [class.d-none]="fixedNav"  class="regularNav" #nav>
     <div class="link-wrap" >
-        <a href="#home" [class.active]="currentSection.homeSection">Home</a>
-        <a href="#about" [class.active]="currentSection.aboutSection">About</a>
-        <a href="#portfolio" [class.active]="currentSection.portfolioSection">Portfolio</a>
-        <a href="#contact" [class.active]="currentSection.contactSection">Contact</a>
+        <a href="#home" [class.active]="triggerService.homeSection$.value">Home</a>
+        <a href="#about" [class.active]="triggerService.aboutSection$.value">About</a>
+        <a href="#portfolio" [class.active]="triggerService.portfolioSection$.value">Portfolio</a>
+        <a href="#contact" [class.active]="triggerService.contactSection$.value">Contact</a>
     </div>
 </nav>
 
@@ -12,10 +12,10 @@
 
 <nav [class.fixed-nav]="fixedNav" [class.d-none]="!fixedNav">
     <div class="link-wrap">
-        <a href="#home" [class.active]="currentSection.homeSection">Home</a>
-        <a href="#about" [class.active]="currentSection.aboutSection">About</a>
-        <a href="#portfolio" [class.active]="currentSection.portfolioSection">Portfolio</a>
-        <a href="#contact" [class.active]="currentSection.contactSection">Contact</a>
+        <a href="#home" [class.active]="triggerService.homeSection$.value">Home</a>
+        <a href="#about" [class.active]="triggerService.aboutSection$.value">About</a>
+        <a href="#portfolio" [class.active]="triggerService.portfolioSection$.value">Portfolio</a>
+        <a href="#contact" [class.active]="triggerService.contactSection$.value">Contact</a>
     </div>
 </nav>
 

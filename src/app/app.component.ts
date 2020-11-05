@@ -6,8 +6,7 @@ import {
 } from '@angular/core';
 import { AnimationTriggerService } from './services/animationtriggerservice';
 import { MatDrawerContainer } from '@angular/material/sidenav';
-import { BehaviorSubject } from 'rxjs';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 
 @Component({
@@ -62,7 +61,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   checkForStartPage() {
     let url = window.location.href;  
     this.triggerService.navLinkActivation = !url.endsWith('data-protection') && !url.endsWith('imprint') ;
-    // this.menu.resetNavClasses();
   }
 
 
