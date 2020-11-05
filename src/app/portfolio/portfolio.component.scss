@@ -40,8 +40,6 @@ mat-grid-tile {
     transition: 225ms all ease-in-out;
     display: flex;
     flex-direction: column;
-    // opacity: 0;
-    // animation-fill-mode: backwards;
 
     &:hover {
         background-color: #F5F5F5;
@@ -117,7 +115,7 @@ mat-grid-tile {
     margin-top: 1rem;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .filter-row {
         margin: 0 2rem 1rem 2rem;
     }

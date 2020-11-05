@@ -4,6 +4,7 @@ import { AnimationTriggerService } from '../services/animationtriggerservice';
 import { projects } from '../../assets/data/projects';
 
 
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -39,9 +40,11 @@ export class PortfolioComponent implements OnInit, AfterViewChecked {
   arrangeGrid() {
     let screenWidth = window.innerWidth;
     
-    if (screenWidth >= 1200) { this.columns = 3}
-    if (screenWidth < 1200) { this.columns = 2 }
-    if (screenWidth < 800 ) {this.columns = 1}   
+    if (screenWidth >= 1300) { this.columns = 3 }
+    if (screenWidth < 1300) { this.columns = 2 }
+    if (screenWidth < 850 ) { this.columns = 1 }   
+
+    return this.columns;
     
   }
 

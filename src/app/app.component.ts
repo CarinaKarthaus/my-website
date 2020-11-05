@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MatDrawerContainer) MatDrawerContainer;
 
 
-  constructor(public triggerService: AnimationTriggerService, private router: Router, private menu: MenuComponent) {  }
+  constructor(public triggerService: AnimationTriggerService, private router: Router, private menu: MenuComponent)  {  }
 
   
  currentSection = this.triggerService.currentSection;
@@ -33,18 +33,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.checkForStartPage();
-    /**
-     * Scroll to top position when routing to another page
-     */
 
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-        document.getElementById('drawerContainer').scrollIntoView();
-      }
-    });
- 
-
- 
+  
   }
   
   ngAfterViewInit() {
@@ -52,12 +42,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     
       this.MatDrawerContainer.scrollable.elementScrolled().subscribe(() => {
         if (this.triggerService.navLinkActivation) {
-       this.getScrollPosition(this);
-       this.triggerService.animateOnScroll();
+        this.getScrollPosition(this);
+        this.triggerService.animateOnScroll();
       }
    });
-
- 
 
   }
 
@@ -68,7 +56,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   getScrollPosition(self: AppComponent) {
     this.currentYPosition = self.drawerContainer.nativeElement.getBoundingClientRect().top;
     this.triggerService.currentPagePosition = Math.abs(this.currentYPosition); // Remove negative sign from position
-
+    
   }
 
   checkForStartPage() {

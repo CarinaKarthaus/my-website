@@ -78,14 +78,15 @@ mat-icon {
 
 
 @media (max-width: 850px) {
-    fa-icon {
+    .social-media-wrap {
+        fa-icon {
         font-size: 2rem;
-    }
+        }
+}
 }
 
 @media (max-width: 450px) {
     .social-media-wrap {
         width: 100%;
-  
     }
 }

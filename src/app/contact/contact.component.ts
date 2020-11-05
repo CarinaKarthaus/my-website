@@ -55,12 +55,11 @@ export class ContactComponent implements OnInit, AfterViewInit {
 
   // send email to server
   sendEmail(formDirective) {
-    console.log();
 
    this.http
-    .post('https://carina-karthaus.developeradademie.com/php/send_mail.php', {
-      email: this.contactForm.controls['email'].value,
+    .post('https://carina-karthaus.developerakademie.com/php/send_mail.php', {
       name: this.contactForm.controls['name'].value,
+      email: this.contactForm.controls['email'].value,
       message: this.contactForm.controls['message'].value,
     })
     .subscribe(
