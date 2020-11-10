@@ -24,6 +24,16 @@
     background-color: #05C2C9;
     border-radius: 25%;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 3rem;
+
+    img {
+        width: 70%;
+        filter: invert(10%) sepia(23%) saturate(945%) hue-rotate(173deg) brightness(93%) contrast(90%);
+    }
 }
 
 .skills-wrap {
@@ -54,6 +64,10 @@
         width: 60%;
         font-size: 1.2rem;
         line-height: 1.8rem;
+    }
+
+    strong {
+        color: #05C2C9;
     }
 
 }
@@ -135,6 +149,7 @@ mat-progress-bar {
         width: 7rem;
         height: 7rem;
         margin-bottom: 0.5rem;
+        font-size: 2.5rem;
     }
 }
 
@@ -209,6 +224,7 @@ mat-progress-bar {
     .label-icon {
         width: 5rem;
         height: 5rem;
+        font-size: 2rem;
     }
     .bio-wrap {
         img {

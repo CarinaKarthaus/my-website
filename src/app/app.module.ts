@@ -23,7 +23,7 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { ImprintComponent } from './imprint/imprint.component';
 import { DataProtectionComponent } from './data-protection/data-protection.component';
 import { faGithub, faXing, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { faBars, faCheckCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCheckCircle, faExclamationTriangle, faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ContentComponent } from './content/content.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -82,7 +82,7 @@ import { DialogContactComponent } from './dialog-contact/dialog-contact.componen
 export class AppModule {
   constructor (library: FaIconLibrary) {
     // Add icons to library to make them accessible
-    library.addIcons(faGithub, faLinkedinIn, faXing, faBars, faCheckCircle, faExclamationTriangle);
+    library.addIcons(faGithub, faLinkedinIn, faXing, faBars, faCheckCircle, faExclamationTriangle, faGlobeAmericas);
   }
 
  }

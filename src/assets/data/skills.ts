@@ -1,19 +1,26 @@
+const imgPath = './assets/img/icons/';
+
+
 const labels = [
     {
+      'icon': imgPath + 'globe1.svg',
       'labelName': 'International Experience',
-      'labelDescr': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'labelDescr': 'Work experience in Germany & Finland. Successfully managed projects with global customers and teams.',
     },
     {
-      'labelName': 'PLACEHOLDER',
-      'labelDescr': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'icon': imgPath + 'puzzle.svg',
+      'labelName': 'Holistic knowledge',
+      'labelDescr': 'Coding & engineering skills combined with design thinking & agile management.',
     },
+    // {
+      // 'icon': '',
+    //   'labelName': 'User-centered',
+    //   'labelDescr': '.',
+    // },
     {
-      'labelName': 'PLACEHOLDER',
-      'labelDescr': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    },
-    {
-      'labelName': 'PLACEHOLDER',
-      'labelDescr': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'icon': imgPath + 'rocket.svg',
+      'labelName': 'Passion for challenge',
+      'labelDescr': 'Loving to go the extra mile and broaden my horizon.',
     }
   ]
   
@@ -34,7 +41,7 @@ const labels = [
     },
     {
       'skillName': 'Angular',
-      'skillLevel': 60
+      'skillLevel': 65
     },
     {
       'skillName': 'Design Thinking',
