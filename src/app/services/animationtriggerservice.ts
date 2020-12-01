@@ -31,11 +31,11 @@ export class AnimationTriggerService {
 
   
 
-  calculateTriggerPositions() {
+  public calculateTriggerPositions() {
     let offsetTop = this.elementOffsetTop;
     let triggerOffset = window.innerHeight / 1.6; // offset to trigger before element reaches top of screen 
     
-    this.triggerPos.home = offsetTop.home ;
+    this.triggerPos.home = window.innerHeight;
     this.triggerPos.about_header = offsetTop.about_header - triggerOffset;
     this.triggerPos.about_labels = offsetTop.about_labels - triggerOffset;
     this.triggerPos.about_skills = offsetTop.about_skills - triggerOffset;
@@ -46,9 +46,8 @@ export class AnimationTriggerService {
     
     this.triggerPos.contact_header = offsetTop.contact_header - triggerOffset;
     this.triggerPos.contact_dialog = offsetTop.contact_dialog - triggerOffset;
-    this.triggerPos.footer = offsetTop.footer - triggerOffset;
-
-    // console.log('triggerPos', this.triggerPos)
+    this.triggerPos.footer = offsetTop.footer - triggerOffset;  
+    
       
   }
 

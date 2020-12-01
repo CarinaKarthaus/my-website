@@ -65,7 +65,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
       this.fixedNav = false;
     }
     if (this.navLinkActivation) {
-          this.checkActiveSection();
+          this.setActiveSection();
     }
   }
   
@@ -73,40 +73,57 @@ export class MenuComponent implements OnInit, AfterViewInit {
   @ViewChild('nav') nav: ElementRef;
   toggleFixedNav() {
     let navHeight = this.nav.nativeElement.offsetHeight; 
-    let triggerPositionReached = this.currentPagePosition > (this.triggerPos.home + navHeight );
+    let triggerPositionReached = this.currentPagePosition >= (this.triggerPos.home + navHeight );
     if ( triggerPositionReached) {
       this.fixedNav = true;
     } else {
       this.fixedNav = false;
     }            
   }
+
   /**
    * Checks section currently visible and assigns/removes active-link-style accordingly
    */
-  checkActiveSection() {
+  setActiveSection() {
     this.elementOffsetTop = this.triggerService.elementOffsetTop;
     let navSwitchOffset = window.innerHeight / 2;
 
-      if (this.currentPagePosition <= this.elementOffsetTop.home - navSwitchOffset) {
-          this.resetNavClasses();
-          this.currentSection.homeSection = true;
-      }
-      if (this.currentPagePosition > this.elementOffsetTop.about_header - navSwitchOffset) {
-          this.resetNavClasses();
-          this.currentSection.aboutSection = true;
-      }
-      if (this.currentPagePosition > this.elementOffsetTop.portfolio_header - navSwitchOffset) {
-          this.resetNavClasses();
-          this.currentSection.portfolioSection = true;
-      }
-      if (this.currentPagePosition > this.elementOffsetTop.contact_header - navSwitchOffset) {
-          this.resetNavClasses();
-          this.currentSection.contactSection = true;
-      }
+    this.checkHomeSection(navSwitchOffset);
+    this.checkAboutSection(navSwitchOffset);
+    this.checkPortfolioSection(navSwitchOffset);
+    this.checkContactSection(navSwitchOffset);
 
     this.updateSectionObservables();
 
   }
+
+  checkHomeSection(navSwitchOffset: number) {
+    if (this.currentPagePosition <= this.elementOffsetTop.home - navSwitchOffset) {
+      this.resetNavClasses();
+      this.currentSection.homeSection = true;
+    }
+  }
+
+  checkAboutSection(navSwitchOffset: number) {
+    if (this.currentPagePosition > this.elementOffsetTop.about_header - navSwitchOffset) {
+      this.resetNavClasses();
+      this.currentSection.aboutSection = true;
+    }
+  }
+
+  checkPortfolioSection(navSwitchOffset: number) {
+    if (this.currentPagePosition > this.elementOffsetTop.portfolio_header - navSwitchOffset) {
+      this.resetNavClasses();
+      this.currentSection.portfolioSection = true;
+    }
+  }
+
+  checkContactSection(navSwitchOffset: number) {
+    if (this.currentPagePosition > this.elementOffsetTop.contact_header - navSwitchOffset) {
+      this.resetNavClasses();
+      this.currentSection.contactSection = true;
+    }
+  }
 
   /**
    * Update the section-Observables 

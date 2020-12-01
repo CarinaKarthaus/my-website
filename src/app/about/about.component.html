@@ -17,8 +17,10 @@
     <div class="skills-wrap" id="about_skills" #aboutSkills>
         <div class="bio-wrap" [@slideIn]="animationState['about_skills']">
             <img src="./assets/img/profile.jpg">
-            <h2>Who I am</h2>
-            <p>I'm a <strong>Front-End-Developer</strong> from Germany with experience in Product Management and Industrial Automation. I love to work in diverse teams to create meaningful solutions.</p>
+            <h2>And here I am</h2>
+            <p>I'm a <strong>Front-End-Developer</strong> from Germany with experience in Technical Product Management. <br>
+                Apart from tech, I am an outdoor sports enthusiast who loves exploring new cultures & countries.</p>
+
         </div>
 
         <div class="bar-wrap" [style.opacity]="animationState['about_skills'] == 'out' ? '0' : '1'" [@slideInReverseChild]="animationState['about_skills']" >
@@ -26,7 +28,7 @@
                 <div class="bar-scale">
                     <div class="bar-fill" [style.width]="skill.skillLevel + '%'"></div>
                     <div class="bar-tag flex"> {{ skill.skillName }}</div>
-                    <div class="bar-value">{{ skill.skillLevel + '%'}}</div>
+                    <!-- <div class="bar-value">{{ skill.skillLevel + '%'}}</div> -->
                 </div>
             </div>
         </div>

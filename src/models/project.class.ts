@@ -4,7 +4,6 @@ export class Project {
   app_link: string;
   github_link: string;
   img: string;
-  img_mobile: string;
   category: string;
 
   constructor(obj?: any) {
@@ -13,7 +12,6 @@ export class Project {
     this.app_link = obj ? obj.app_link : '';
     this.github_link = obj ? obj.github_link : '';
     this.img = obj ? obj.img : '';
-    this.img_mobile = obj ? obj.img_mobile : '';
     this.category = obj ? obj.category : '';
   }
 

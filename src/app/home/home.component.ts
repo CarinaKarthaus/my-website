@@ -17,6 +17,8 @@ import { AnimationTriggerService } from '../services/animationtriggerservice';
 export class HomeComponent implements OnInit, AfterViewInit {
   canvas: HTMLCanvasElement;
   space: CanvasSpace;
+  homeOffset: number;
+  elementOffsetTop = this.triggerService.elementOffsetTop;
 
   @ViewChild('pt') private parentRef: ElementRef<HTMLElement>;
 
@@ -32,7 +34,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const parentElement = this.parentRef.nativeElement;
     this.canvas = parentElement.querySelector('canvas');
     this.graphicDraw();
+
+  
   }
+
 
   /**
    * Render & resize canvas on window-resize

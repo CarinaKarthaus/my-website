@@ -16,7 +16,7 @@
         <div #portfolioGrid>
             <mat-grid-list  [cols]="arrangeGrid()" rowHeight="4:3" [style.opacity]="animationState['portfolio'] == 'out' ? '0' : '1'"  [@slideInUpwardsChild]="animationState['portfolio']">
                 <mat-grid-tile *ngFor="let project of visibleProjects">
-                    <!-- <img src="{{'./assets/img/projects/'+ project.img }}" > -->
+                    <img src="{{'./assets/img/projects/'+ project.img }}" >
                     <div class="project-wrap">
                         <div class="project-intro">
                             <div>{{ project.title }}</div>

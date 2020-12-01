@@ -4,10 +4,17 @@ const projects = [
       details: 'JavaScript-based jump-and-run-game.', 
       app_link: 'http://carina-karthaus.developerakademie.com/el_pollo_loco/', 
       github_link: 'https://github.com/CarinaKarthaus/el_pollo_loco', 
-      img: 'el_pollo_loco3.png',
-      img_mobile: '',
+      img: 'el_pollo_loco.png',
       category: 'JavaScript'
 
+    },
+    {
+      title: 'Simple CRM', 
+      details: 'Smart & simple webbased CRM system.', 
+      app_link: 'https://simple-crm-16c71.web.app', 
+      github_link: 'https://github.com/JunusErgin/simple-crm', 
+      img: 'simple-crm.png',
+      category: 'Angular'
     },
     {
       title: 'JOIN - The Task Manager', 
@@ -15,7 +22,6 @@ const projects = [
       app_link: 'http://carina-karthaus.developerakademie.com/task-management/', 
       github_link: 'https://github.com/CarinaKarthaus/task-management', 
       img: 'join.png',
-      img_mobile: 'join_mobile.png',
       category: 'JavaScript'
     },    
     {
@@ -24,18 +30,9 @@ const projects = [
       app_link: 'https://ring-of-fire-d7737.web.app/', 
       github_link: 'https://github.com/CarinaKarthaus/ring_of_fire', 
       img: 'ringoffire.png',
-      img_mobile: 'ringoffire_mobile.png',
-      category: 'Angular'
-    },
-    {
-      title: 'Simple CRM', 
-      details: 'Smart & simple webbased CRM system.', 
-      app_link: ' ##########PLACEHOLDER#####', 
-      github_link: '##########PLACEHOLDER#####', 
-      img: 'simple-crm.png',
-      img_mobile: '##########PLACEHOLDER#####',
       category: 'Angular'
     }
+
   ];
 
   export { projects };

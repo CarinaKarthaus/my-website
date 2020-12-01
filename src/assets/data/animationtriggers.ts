@@ -13,7 +13,7 @@
   };
 
   let elementOffsetTop = {
-    home: 1000,
+    home: 900,
     about_header: 1050,
     about_labels: 1100,
     about_skills: 1200,
