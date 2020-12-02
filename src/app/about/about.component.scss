@@ -4,7 +4,7 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
     transition: all 800ms ease-in-out;
-
+    margin-top: 4rem;
 }
 
 .label {
@@ -38,7 +38,7 @@
 
 .skills-wrap {
     display: flex;
-    padding: 8rem 0 4rem 0;
+    padding-bottom: 4rem;
     align-items: center;
 } 
 
@@ -131,47 +131,41 @@ mat-progress-bar {
 }
 
 @media (max-width: 1400px) {
+    .bio-wrap {
+        p {
+            width: 80%;
+        }
+    }
     .bar-wrap {
         padding-right: 0;
+    }
+    .label-wrap {
+        margin-top: 2rem;
+    }
+    .label-icon {
+        width: 6rem;
+        height: 6rem;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
     }
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1200px) {  
     .label-wrap {
+        margin-top: 0;
         h2 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
     }
-
-    .label-icon {
-        width: 7rem;
-        height: 7rem;
-        margin-bottom: 0.5rem;
-        font-size: 2.5rem;
+    .label {
+        flex: 0 1 50%;
+        margin-top: 2rem;
     }
 }
 
 @media (max-width: 1000px) {
-    .label-wrap {
-        h2 {
-            font-size: 1rem;
-        }
-        p {
-            font-size: 0.9rem;
-        }
-    }
-
-    .label-icon {
-        width: 6rem;
-        height: 6rem;
-    }
-    .skills-wrap {
-        padding: 4rem 0 2rem 0;
-        flex-direction: column;
-    }
-
     .bio-wrap {
         width: 100%;
         padding-bottom: 4rem;
@@ -181,13 +175,8 @@ mat-progress-bar {
             width: 14rem;
             height: 14rem;
         }
-
-        h2 {
-            font-size: 1.4rem;
-        }
-
         p {
-            font-size: 1rem;
+            width: 60%;
         }
 
     }
@@ -197,15 +186,30 @@ mat-progress-bar {
         font-size: 0.9rem;
 
     }
+    .label-wrap {
+        margin-top: 2rem;
+    }
+
+    .label-icon {
+        width: 6rem;
+        height: 6rem;
+    }
+    .skills-wrap {
+        padding: 0rem 0 2rem 0;
+        flex-direction: column;
+    }
+
+ 
 }
 
 @media (max-width: 850px) {
     .label {
-        flex: 1 0 40%;
-        padding: 1.5rem;
+        flex: 0 1 70%;
     }
-    .bio-wrap p {
-        width: 70%;
+    .bio-wrap  {
+        p {
+            width: 70%;
+        }
     }
     .bar-tag {
         min-width: 8rem;
@@ -217,10 +221,19 @@ mat-progress-bar {
 }
 
 @media (max-width: 450px) {
+    .label-wrap {
+        margin-top: 4rem;
+        h2 {
+            font-size: 1.1rem;
+
+        }
+    }
+    
     .label {
-        margin-bottom: 1rem;
-        flex: 1 0 50%;
-        padding: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        flex: 0 1 80%;
+        font-size: 0.9rem;
     }
     .label-icon {
         width: 5rem;
@@ -229,16 +242,22 @@ mat-progress-bar {
     }
 
     .skills-wrap {
-        padding: 2rem 0;
+        padding: 0;
     }
     .bio-wrap {
+        padding-bottom: 2rem;
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
         img {
             width: 12rem;
             height: 12rem;
         }
-
         p {
             width: 100%;
+            font-size: 1rem;
         }
     }
     
@@ -246,5 +265,4 @@ mat-progress-bar {
         font-size: 0.8rem;
         width: 100%;
     }
- 
 }

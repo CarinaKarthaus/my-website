@@ -1,29 +1,22 @@
-<div class="section-container" >
+<div class="section-container">
 
     <div class="section-header" [@slideIn]="animationState['about_header']" #aboutHeader>About
         <div class="header-line"></div>
     </div>
 
-    <div class="label-wrap" [style.opacity]="animationState['about_labels'] == 'out' ? '0' : '1'" [@slideInChild]="animationState['about_labels']" #aboutLabels >
-        <div class="label" *ngFor="let label of labels" >
-            <div class="label-icon"> 
-                <img src="{{label.icon}}" >
-            </div>
-            <h2>{{ label.labelName }}</h2>
-            <p>{{ label.labelDescr }}</p>
-        </div>
-    </div>
-
     <div class="skills-wrap" id="about_skills" #aboutSkills>
         <div class="bio-wrap" [@slideIn]="animationState['about_skills']">
             <img src="./assets/img/profile.jpg">
-            <h2>And here I am</h2>
-            <p>I'm a <strong>Front-End-Developer</strong> from Germany with experience in Technical Product Management. <br>
-                Apart from tech, I am an outdoor sports enthusiast who loves exploring new cultures & countries.</p>
+            <h2>Who I am</h2>
+            <p>
+                I'm an <strong>Outdoor Sports Enthusiast</strong> (kayaking forever &hearts;) and <strong>Front-End Developer</strong>
+                who loves pushing boundaries.
+            </p>
 
         </div>
 
-        <div class="bar-wrap" [style.opacity]="animationState['about_skills'] == 'out' ? '0' : '1'" [@slideInReverseChild]="animationState['about_skills']" >
+        <div class="bar-wrap" [style.opacity]="animationState['about_skills'] == 'out' ? '0' : '1'"
+            [@slideInReverseChild]="animationState['about_skills']">
             <div class="bar" *ngFor="let skill of skills">
                 <div class="bar-scale">
                     <div class="bar-fill" [style.width]="skill.skillLevel + '%'"></div>
@@ -32,6 +25,16 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="label-wrap" [style.opacity]="animationState['about_labels'] == 'out' ? '0' : '1'"
+        [@slideInChild]="animationState['about_labels']" #aboutLabels>
+        <div class="label" *ngFor="let label of labels">
+            <div class="label-icon">
+                <img src="{{label.icon}}">
+            </div>
+            <h2>{{ label.labelName }}</h2>
+            <p>{{ label.labelDescr }}</p>
+        </div>
     </div>
 </div>

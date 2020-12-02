@@ -5,20 +5,17 @@ const labels = [
     {
       'icon': imgPath + 'map.svg',
       'labelName': 'My journey began',
-      'labelDescr': 'as product manager in an industrial company. Early on, I got the chance to collaborate in multiple IT and digitalization projects.',
-      // 'Work experience in Germany & Finland. Successfully managed projects with global customers and teams.'
+      'labelDescr': 'as a product manager in an industrial company. Early on, I got the chance to collaborate in multiple IT and digitalization projects.',
     },
     {
       'icon': imgPath + 'heart.svg',
-      'labelName': 'Realizing the huge potential of IT',
-      'labelDescr': 'to achieve progress and create innovation, <strong>I fell in love</strong> with it.'
-      // 'M.Sc. in Engineering Management. Practical experience as Technical Product Manager and Front-End Developer.',
+      'labelName': 'I fell in love with tech',
+      'labelDescr': 'realizing its huge potential to achieve significant progress & to create innovation.'
     },
     {
       'icon': imgPath + 'create_innovation.svg',
-      'labelName': 'Intrigued by the tech side',
-      'labelDescr': 'I felt the desire to CREATE those solutions myself - instead of just handling the business-part.'
-      // 'Familiar working in agile teams and co-moderating Design Thinking workshops for user-centered product development.',
+      'labelName': 'Aspiring to create solutions myself',
+      'labelDescr': 'instead of just handling the business-part, I was longing for a deep dive into the tech-sphere.'
     },
     {
       'icon': imgPath + 'rocket.svg',
